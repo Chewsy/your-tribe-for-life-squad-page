@@ -24,13 +24,13 @@ Deze leertaak wordt behandeld in sprint 13. Er worden verschillende workshops aa
 
 ### Week 2
 
-- [Creative Coding](creative-coding.md) - Maandag
-- [Prioriteren](prioriteren.md) - Woensdag
+- [Prioriteren](prioriteren.md) - Maandag
+- [Creative Coding](creative-coding.md) - Woensdag
 - [Code & Design Review](code-design-review-week-2.md) - Vrijdag
 
 ### Week 3
 
-- [Components](components.md) - Maandag
+- [Core SvelteKit principes](components.md) - Maandag
 - [Wrap-up](wrapup.md) - Woensdag
 - [Retrospect](retrospect.md) - Vrijdag
 
