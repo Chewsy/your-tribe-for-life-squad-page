@@ -50,6 +50,10 @@ Directus heeft een endpoint voor de squads en personen. Hierin kun je per jaar d
 
 👉 Experiment 7: Haal een lijst op van iedereen met de role "squad_leader"
 
+*Voor de hardlopers*
+
+💪 Experiment 8: Laat zien hoeveel mensen er in elke squad zitten van dit jaar
+
 _💡 ProTip: Lees nog eens de [instructies](https://github.com/fdnd-task/server-side-rendering-server-side-website/blob/main/docs/data-filtering-en-template-filters.md) van jaar 1 door als je bent vergeten hoe filteren werkt._
 
 #### Extra bronnen
