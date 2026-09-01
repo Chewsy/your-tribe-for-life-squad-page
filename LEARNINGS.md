@@ -1,1 +1,0 @@
-# Inzichten uit dit project
