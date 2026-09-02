@@ -1,28 +1,22 @@
 <script>
-    let { data } = $props();
+    import StudentCard from "$lib/student_card.svelte";
 
-    const persons = $derived(data.persons);
+    let { data } = $props();
 </script>
 
-<main class="grid">
-	{#each persons as person}
-    <article class="student-card">{person.name}</article>
-	{/each}
+<main>
+    <section class="grid">
+        {#each data.persons as person}
+            <StudentCard {person} />
+        {/each}
+    </section>
 </main>
 
 <style>
     .grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(auto, 1fr);
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    article {
-        width: 300px;
-        height: 300px;
-        background-color: aquamarine;
-        border-radius: 10px;
+        grid-auto-rows: auto;
+        gap: 1rem;
     }
 </style>
