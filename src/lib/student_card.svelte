@@ -30,6 +30,10 @@
         border-radius: 0.5rem;
         border: 1px solid black;
 
+        @media (width < 768px) {
+            font-size: small;
+        }
+
         & img {
             width: 100%;
             height: 11rem;
