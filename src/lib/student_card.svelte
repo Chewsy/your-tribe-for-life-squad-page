@@ -1,4 +1,6 @@
 <script>
+    import openArrow from "$lib/assets/open_arrow.svg";
+
     let { person } = $props();
 </script>
 
@@ -6,7 +8,17 @@
     {#if person.image}
         <img src={person.image} alt="Foto van {person.name}" />
     {/if}
-    <p>{person.name}</p>
+    <div class="name-age">
+        <p>{person.name}</p>
+
+        <a href="#slug-route">
+            <img
+                class="open-detailpage-icon"
+                src={openArrow}
+                alt="open {person.name}'s visitekaartje"
+            />
+        </a>
+    </div>
 </article>
 
 <style>
@@ -14,15 +26,32 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        padding: 1rem;
-        background-color: aquamarine;
-        border-radius: 10px;
+        background-color: hsl(0, 0%, 100%);
+        border-radius: 0.5rem;
+        border: 1px solid black;
 
         & img {
             width: 100%;
             height: 11rem;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+        & .name-age {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            & p {
+                margin: 0;
+                padding: 0;
+            }
+
+            & .open-detailpage-icon {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
         }
     }
 </style>
