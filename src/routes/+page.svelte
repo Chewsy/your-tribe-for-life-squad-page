@@ -5,10 +5,9 @@
 </script>
 
 <main class="grid">
-    <article class="student-card"></article>
-    <article class="student-card"></article>
-    <article class="student-card"></article>
-    <article class="student-card"></article>
+	{#each persons as person}
+    <article class="student-card">{person.name}</article>
+	{/each}
 </main>
 
 <style>
