@@ -207,4 +207,15 @@
 	}
 }
 
+@media (min-width: 700px) {
+	.profile-header {
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.card-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
 </style>
