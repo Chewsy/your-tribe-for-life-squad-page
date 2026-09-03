@@ -1,5 +1,5 @@
 <script>
-    import StudentCard from "$lib/student_card.svelte";
+    import StudentCard from "$lib/Student_card.svelte";
 
     let { data } = $props();
 </script>

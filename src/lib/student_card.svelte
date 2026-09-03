@@ -25,14 +25,18 @@
     .student-card {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        height: 100%;
         background-color: hsl(0, 0%, 100%);
         border-radius: 0.5rem;
         border: 1px solid black;
 
+        & h2 {
+            font-size: 12px;
+        }
+
         @media (width < 768px) {
             h2 {
-                font-size: x-small;
+                font-size: 10px;
             }
         }
 
@@ -47,11 +51,17 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            align-items: center;
             padding-left: 1rem;
             padding-right: 1rem;
             & h2 {
                 margin: 0;
                 padding: 0;
+            }
+
+            & a {
+                display: flex;
+                align-items: center;
             }
 
             & .open-detailpage-icon {
