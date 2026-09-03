@@ -30,7 +30,9 @@
     justify-items: stretch;
     padding: .5em;
 
-    .squad-list-item {
+    /* From 500px is the width for the cards wider */
+    @media (min-width: 500px ) {
+        grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
     }
   }
 
