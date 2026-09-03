@@ -5,17 +5,35 @@
     const persons = $derived(data.persons);
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
 
-<ul>
+<ul class="squad-list">
     {#each persons as person}
-        <li>
+        <li class="squad-list-item">
             <Card {person} />
         </li>
     {/each}
 </ul>
 
 <style>
+
+  * {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .squad-list {
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1em;
+    align-items: start;
+    justify-items: stretch;
+    padding: .5em;
+
+    .squad-list-item {
+    }
+  }
+
+
 
 </style>
