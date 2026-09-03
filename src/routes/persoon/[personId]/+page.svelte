@@ -16,7 +16,7 @@
 
     const aboutMe = [
         { label: 'Nickname', value: person.nickname },
-        { label: 'Shoesize', value: person.shoe_size },
+        { label: 'Shoe size', value: person.shoe_size },
         { label: 'Team S13', value: person.team_s13 },
         { label: 'Height', value: person.length }
     ];
@@ -33,18 +33,18 @@
 <a class="back-link" href="/">← Back to overview</a>
 
 <header class="profile-header">
-	{#if person.avatar}
-		<img class="profile-photo" src={person.avatar} alt={person.name} />
+	{#if person.mugshot}
+		<img class="profile-photo" src={`https://fdnd.directus.app/assets/${person.mugshot}`} alt={person.name} />
 	{/if}
 
 	<div class="profile-info">
 		<h1>{person.name}</h1>
 
 		{#if person.github_handle}
-			<p class="handle">@{person.github_handle}</p>
+			<p class="github-name">@{person.github_handle}</p>
 		{/if}
 
-        <p class="meta">
+        <p class="profile-details">
 			{#if person.birthdate}
 				<span>{person.birthdate}</span>
 			{/if}
@@ -123,6 +123,88 @@
 </div>
 
 <style>
+:global(body) {
+	font-family: system-ui, sans-serif;
+	color: #1a1a1a;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 1.5rem;
+}
 
+.back-link {
+	display: inline-block;
+	color: #1a1a1a;
+	text-decoration: none;
+	margin-bottom: 1.5rem;
+}
+
+.profile-header {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+
+	.profile-photo {
+		width: 140px;
+		height: 140px;
+		object-fit: cover;
+		border-radius: 1rem;
+	}
+
+	.profile-info {
+		h1 {
+			margin: 0;
+			font-size: 1.75rem;
+		}
+
+		.github-name,
+		.profile-details {
+			color: #6b6b6b;
+			margin: 0.5rem 0;
+		}
+
+		.profile-details {
+			display: flex;
+			gap: 0.5rem;
+		}
+
+		.divider {
+			color: #ccc;
+		}
+	}
+}
+
+.card-grid {
+	display: grid;
+	gap: 1rem;
+
+	.card {
+		border: 1px solid #e0e0e0;
+		border-radius: 1rem;
+		padding: 1.25rem;
+
+		h2 {
+			margin-top: 0;
+			font-size: 1rem;
+		}
+
+		p {
+			margin: 0.6rem 0;
+		}
+
+		.color-row {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.color-swatch {
+			width: 1rem;
+			height: 1rem;
+			border-radius: 0.25rem;
+			border: 1px solid #ccc;
+		}
+	}
+}
 
 </style>
