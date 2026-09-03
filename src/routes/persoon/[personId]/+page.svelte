@@ -145,8 +145,8 @@
 	margin-bottom: 1.5rem;
 
 	.profile-photo {
-		width: 140px;
-		height: 140px;
+		width: 9rem;
+		height: 9rem;
 		object-fit: cover;
 		border-radius: 1rem;
 	}
