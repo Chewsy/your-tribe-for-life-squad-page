@@ -1,6 +1,33 @@
 <script>
 	let { data } = $props();
 	let person = data.person;
+
+    const favorites = [
+	    { label: 'Soup', value: person.fav_soup },
+		{ label: 'Fruit', value: person.fav_fruit },
+		{ label: 'Game', value: person.fav_game },
+		{ label: 'Muziek genre', value: person.fav_music_genre },
+		{ label: 'Seizoen', value: person.fav_season },
+		{ label: 'Dier', value: person.fav_animal },
+		{ label: 'Hobby', value: person.fav_hobby },
+		{ label: 'Vibe', value: person.vibe_emoji },
+		{ label: 'Emoji', value: person.fav_emoji }
+	];
+
+    const aboutMe = [
+        { label: 'Nickname', value: person.nickname },
+        { label: 'Shoesize', value: person.shoe_size },
+        { label: 'Team S13', value: person.team_s13 },
+        { label: 'Height', value: person.length }
+    ];
+
+    const techFavorites = [
+        { label: 'Feature', value: person.fav_feature },
+        { label: 'Attribute', value: person.fav_attribute },
+        { label: 'Tag', value: person.fav_tag },
+        { label: 'Property', value: person.fav_property }
+    ];
+
 </script>
 
 <a class="back-link" href="/">← Back to overview</a>
@@ -45,85 +72,37 @@
 	<section class="card">
 		<h2>Favorites</h2>
 
-        {#if person.fav_kitchen}
-			<p><strong>Kitchen:</strong> {person.fav_kitchen}</p>
-		{/if}
-
-		{#if person.fav_soup}
-			<p><strong>Soup:</strong> {person.fav_soup}</p>
-		{/if}
-
-		{#if person.fav_fruit}
-			<p><strong>Fruit:</strong> {person.fav_fruit}</p>
-		{/if}
-
-		{#if person.fav_game}
-			<p><strong>Game:</strong> {person.fav_game}</p>
-		{/if}
-
-		{#if person.fav_music_genre}
-			<p><strong>Muziek genre:</strong> {person.fav_music_genre}</p>
-		{/if}
-
-		{#if person.fav_season}
-			<p><strong>Seizoen:</strong> {person.fav_season}</p>
-		{/if}
-
-		{#if person.fav_animal}
-			<p><strong>Dier:</strong> {person.fav_animal}</p>
-		{/if}
-
-		{#if person.fav_hobby}
-			<p><strong>Hobby:</strong> {person.fav_hobby}</p>
-		{/if}
-
-		{#if person.vibe_emoji}
-			<p><strong>Vibe:</strong> {person.vibe_emoji}</p>
-		{/if}
-
-		{#if person.fav_emoji}
-			<p><strong>Emoji:</strong> {person.fav_emoji}</p>
-		{/if}
+        {#each favorites as favorite}
+			{#if favorite.value}
+				<p>
+					<strong>{favorite.label}:</strong> {favorite.value}
+				</p>
+			{/if}
+		{/each}
 
 	</section>
 
 	<section class="card">
 		<h2>About me</h2>
-		{#if person.nickname}
-			<p><strong>Nickname:</strong> {person.nickname}</p>
-		{/if}
 
-		{#if person.shoe_size}
-			<p><strong>Shoesize:</strong> {person.shoe_size}</p>
-		{/if}
-
-		{#if person.team_s13}
-			<p><strong>Team S13:</strong> {person.team_s13}</p>
-		{/if}
-        
-		{#if person.length}
-			<p><strong>Height:</strong> {person.length}</p>
-		{/if}
+        {#each aboutMe as about}
+            {#if about.value}
+                <p><strong>{about.label}:</strong> {about.value}</p>
+            {/if}
+	    {/each}
+		
 	</section>
 
 	<section class="card">
 		<h2>Tech favorites</h2>
 
-		{#if person.fav_feature}
-			<p><strong>Feature:</strong> {person.fav_feature}</p>
-		{/if}
-
-		{#if person.fav_attribute}
-			<p><strong>Attribute:</strong> {person.fav_attribute}</p>
-		{/if}
-
-		{#if person.fav_tag}
-			<p><strong>Tag:</strong> {person.fav_tag}</p>
-		{/if}
-
-		{#if person.fav_property}
-			<p><strong>Property:</strong> {person.fav_property}</p>
-		{/if}
+		{#each techFavorites as favorite}
+		    {#if favorite.value}
+                <p>
+                    <strong>{favorite.label}:</strong> {favorite.value}
+                </p>
+		    {/if}
+	    {/each}
 
         {#if person.fav_color}
 			<p class="color-row">
@@ -144,5 +123,6 @@
 </div>
 
 <style>
+
 
 </style>
