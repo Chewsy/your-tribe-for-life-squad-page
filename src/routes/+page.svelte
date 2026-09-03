@@ -31,12 +31,12 @@
     padding: .5em;
 
     /* From 500px is the width for the cards wider */
-    @media (min-width: 500px ) {
+    @media (width >= 500px ) {
         grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
     }
 
     /* On big screen */
-    @media (min-width: 900px ) {
+    @media (width >= 900px ) {
       padding-left: 1em;
       padding-right: 1em;    
     }
