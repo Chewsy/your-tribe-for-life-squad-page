@@ -3,29 +3,29 @@
 	let person = data.person;
 
     const favorites = [
-	    { label: 'Soup', value: person.fav_soup },
+	    { label: 'Soep', value: person.fav_soup },
 		{ label: 'Fruit', value: person.fav_fruit },
-		{ label: 'Game', value: person.fav_game },
+		{ label: 'Spel', value: person.fav_game },
 		{ label: 'Muziek genre', value: person.fav_music_genre },
 		{ label: 'Seizoen', value: person.fav_season },
 		{ label: 'Dier', value: person.fav_animal },
 		{ label: 'Hobby', value: person.fav_hobby },
-		{ label: 'Vibe', value: person.vibe_emoji },
+		{ label: 'Sfeer', value: person.vibe_emoji },
 		{ label: 'Emoji', value: person.fav_emoji }
 	];
 
     const aboutMe = [
-        { label: 'Nickname', value: person.nickname },
-        { label: 'Shoe size', value: person.shoe_size },
+        { label: 'Bijnaam', value: person.nickname },
+        { label: 'Shoenmaat', value: person.shoe_size },
         { label: 'Team S13', value: person.team_s13 },
-        { label: 'Height', value: person.length }
+        { label: 'Lengte', value: person.length }
     ];
 
     const techFavorites = [
         { label: 'Feature', value: person.fav_feature },
-        { label: 'Attribute', value: person.fav_attribute },
+        { label: 'Attribuut', value: person.fav_attribute },
         { label: 'Tag', value: person.fav_tag },
-        { label: 'Property', value: person.fav_property }
+        { label: 'Eigenschap', value: person.fav_property }
     ];
 
 </script>
