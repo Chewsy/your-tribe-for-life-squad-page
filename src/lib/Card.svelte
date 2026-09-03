@@ -31,7 +31,7 @@
         <h2>{person.name},</h2>
         <p>{age}</p>
       </div>
-      <a href="/detailpage/{person.person_id}">
+      <a href="/persoon/{person.id}">
         <img src={arrowIcon} alt="Bekijk profiel van {person.name} " class="arrow-icon" width="12" height="12"/> 
       </a>
     </div>
