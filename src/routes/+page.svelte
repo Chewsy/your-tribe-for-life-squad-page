@@ -5,11 +5,13 @@
 </script>
 
 <main>
-    <section class="grid">
+    <ul class="grid">
         {#each data.persons as person}
-            <StudentCard {person} />
+            <li>
+                <StudentCard {person} />
+            </li>
         {/each}
-    </section>
+    </ul>
 </main>
 
 <style>
@@ -18,6 +20,9 @@
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
         gap: 1rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
     }
 
     @media (width >= 768px) {

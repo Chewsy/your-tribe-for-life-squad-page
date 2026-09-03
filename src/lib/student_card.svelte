@@ -9,7 +9,7 @@
         <img src={person.image} alt="Foto van {person.name}" />
     {/if}
     <div class="name-age">
-        <p>{person.name}</p>
+        <h2>{person.name}</h2>
 
         <a href="#slug-route">
             <img
@@ -31,7 +31,9 @@
         border: 1px solid black;
 
         @media (width < 768px) {
-            font-size: small;
+            h2 {
+                font-size: x-small;
+            }
         }
 
         & img {
@@ -47,7 +49,7 @@
             justify-content: space-between;
             padding-left: 1rem;
             padding-right: 1rem;
-            & p {
+            & h2 {
                 margin: 0;
                 padding: 0;
             }
