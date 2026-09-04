@@ -9,7 +9,7 @@ export async function load({ params }) {
 
 	// Als de response niet (!) ok is, weergeef de error 404 met de hardcoded error bericht
 	if (!res.ok) {
-		error(404, { message: 'Oh nee, deze pagina bestaat niet!' });
+		error(404, { message: 'Oh nee, deze persoon bestaat niet!' });
 	}
 
 	const { data: person } = await res.json();
