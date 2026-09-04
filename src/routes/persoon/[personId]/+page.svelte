@@ -240,5 +240,10 @@
 	&:hover {
 		background: var(--secondary-accent);
 	}
+
+		&:focus-visible {
+		outline: 2px solid var(--dark-purple);
+		outline-offset: 2px;
+	}
 }
 </style>
