@@ -117,7 +117,11 @@
 	{#if person.fav_spotify_track}
 		<section class="card">
 			<h2>Favorite track</h2>
-			<a href={person.fav_spotify_track} target="_blank">Open op Spotify</a>
+			<a class="spotify-button" href={person.fav_spotify_track} target="_blank" rel="noopener">
+				<img src="/spotify-icon.svg" alt="" width="16" height="16" />
+				Open op Spotify
+			</a>
+	
 		</section>
 	{/if}
 </div>
@@ -218,4 +222,28 @@
 	}
 }
 
+.spotify-button {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-sm);
+	padding: var(--space-sm) var(--space-md);
+	margin-top: var(--space-md);
+	background: var(--accent);
+	border: none;
+	border-radius: var(--radius);
+	color: var(--white);
+	font-weight: 600;
+	font-size: 1rem;
+	text-decoration: none;
+
+
+	&:hover {
+		background: var(--secondary-accent);
+	}
+
+		&:focus-visible {
+		outline: 2px solid var(--dark-purple);
+		outline-offset: 2px;
+	}
+}
 </style>
