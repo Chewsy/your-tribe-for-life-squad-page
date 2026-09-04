@@ -3,6 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	// hiermee haal ik de navigatie component erbij
 	import Navigation from '$lib/Navigation.svelte';
+	import '$lib/styleguide.css';
 
 	// $props() pakt de props van deze layout, children is de pagina die erin komt
 	let { children } = $props();
