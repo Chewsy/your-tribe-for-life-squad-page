@@ -13,7 +13,7 @@
 	/* Lettertype */
 	--font: system-ui, sans-serif;
 	--font-size: 1rem; /* volgens a11y */
-	line-height: 1.5; /* volgens a11y */
+	--line-height: 1.5; /* volgens a11y */
 
 	/* Spacing (padding, margin etc) */
 	--space-xl: 2.5rem;
