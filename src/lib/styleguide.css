@@ -1,0 +1,53 @@
+:root {
+
+	/* Kleuren */
+	--default-purple: hsl(268, 62%, 46%);
+	--light-purple: hsl(278, 51%, 59%);
+	--dark-purple: hsl(260, 35%, 10%);
+	--white: hsl(0, 0%, 98%);
+
+	--background: var(var(--white));
+	--accent: var(--default-purple);
+	--secondary-accent: var(--light-purple);
+
+	/* Lettertype */
+	--font: system-ui, sans-serif;
+	--font-size: 1rem; /* volgens a11y */
+	--line-height: 1.5; /* volgens a11y */
+
+	/* Spacing (padding, margin etc) */
+	--space-xl: 2.5rem;
+	--space-lg: 1.5rem;
+	--space-md: 1rem;
+	--space-sm: 0.5rem;
+	--space-xs: 0.25rem;
+
+	/* Border radius - 10px */
+	--radius: 0.625rem;
+}
+
+/* Globale styling */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: var(--font-size);
+	background: var(--white);
+	color: var(--dark-purple);
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--secondary-accent);
+}
