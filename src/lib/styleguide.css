@@ -6,7 +6,7 @@
 	--dark-purple: hsl(260, 35%, 10%);
 	--white: hsl(0, 0%, 98%);
 
-	--background: var(var(--white));
+	--background: var(--white);
 	--accent: var(--default-purple);
 	--secondary-accent: var(--light-purple);
 
@@ -15,12 +15,17 @@
 	--font-size: 1rem; /* volgens a11y */
 	--line-height: 1.5; /* volgens a11y */
 
+	/* Font weight */
+	--bold: 700;
+
 	/* Spacing (padding, margin etc) */
 	--space-xl: 2.5rem;
 	--space-lg: 1.5rem;
 	--space-md: 1rem;
 	--space-sm: 0.5rem;
 	--space-xs: 0.25rem;
+
+	--gap: 0.625rem;
 
 	/* Border radius - 10px */
 	--radius: 0.625rem;
