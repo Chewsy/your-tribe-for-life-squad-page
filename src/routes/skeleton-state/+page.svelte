@@ -3,7 +3,7 @@
 </script>
 
 <main>
-	/* Hardcoded 12 cards voor demo */
+	<!-- Hardcoded 12 cards voor demo -->
 	<ul class="grid">
 		<li>
 			<SkeletonCard />
