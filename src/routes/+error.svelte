@@ -1,11 +1,48 @@
 <script>
     import { page } from "$app/state";
 
-    let errorRes = page.error?.message ?? "Oh nee, deze persoon bestaat niet!";
+    const message = page.error?.message ?? "Oh nee, deze persoon bestaat niet!";
 </script>
 
-<h1>({page.status})</h1>
+<main class="error">
+    <h1 class="error-code">{page.status}</h1>
 
-<p>{errorRes}</p>
+    <h2>Pagina niet gevonden</h2>
 
-<a href="/">Terug naar overzicht</a>
+    <p>{message}</p>
+
+    <a href="/">Terug naar overzicht</a>
+</main>
+
+<style>
+    .error {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: var(--font);
+    }
+
+    .error-code {
+        font-size: 6rem;
+        font-weight: 700; /* lettertype diktes toevoegen aan stylesheet */
+        color: var(--dark-purple);
+    }
+
+    h2 {
+        font-size: 2rem; /* meer groottes toevoegen aan stylesheet */
+        color: var(--dark-purple);
+    }
+
+    p {
+        color: var(--dark-purple);
+    }
+
+    a {
+        padding: var(--space-sm) var(--space-md);
+        margin-top: var(--space-md);
+        background: var(--accent);
+        border-radius: var(--radius);
+        color: var(--white);
+        font-size: var(--font-size);
+    }
+</style>
