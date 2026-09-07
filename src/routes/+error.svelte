@@ -2,12 +2,13 @@
     import { page } from "$app/state";
 
     const message = page.error?.message ?? "Oh nee, deze persoon bestaat niet!";
+    const heading = page.status === 404 ? "Pagina niet gevonden" : "Er ging iets mis";
 </script>
 
 <main class="error">
     <h1 class="error-code">{page.status}</h1>
 
-    <h2>Pagina niet gevonden</h2>
+    <h2>{heading}</h2>
 
     <p>{message}</p>
 
@@ -51,5 +52,6 @@ a {
 
 a:hover {
 	background-color: var(--secondary-accent);
+    color: var(--white);
 }
 </style>
