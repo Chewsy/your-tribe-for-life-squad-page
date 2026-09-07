@@ -17,8 +17,10 @@
 <style>
     .error {
         display: flex;
+        height: 100dvh;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         font-family: var(--font);
     }
 
@@ -37,12 +39,17 @@
         color: var(--dark-purple);
     }
 
-    a {
-        padding: var(--space-sm) var(--space-md);
-        margin-top: var(--space-md);
-        background: var(--accent);
-        border-radius: var(--radius);
-        color: var(--white);
-        font-size: var(--font-size);
-    }
+a {
+	padding: var(--space-sm) var(--space-md);
+	margin-top: var(--space-md);
+	background-color: var(--accent);
+	color: var(--white);
+	font-size: var(--font-size);
+	text-decoration: none;
+	border-radius: var(--radius);
+}
+
+a:hover {
+	background-color: var(--secondary-accent);
+}
 </style>
