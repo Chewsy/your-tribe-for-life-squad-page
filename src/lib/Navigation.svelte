@@ -12,7 +12,7 @@
 			<label class="search-field">
 				<!-- deze tekst is alleen voor screenreaders -->
 				<span class="visually-hidden">Search</span>
-				<input type="search" placeholder="Search..." />
+				<input type="search" placeholder="Zoek een student" />
 				<!-- dit svg is het vergrootglas icoon -->
 				<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
 					<circle cx="11" cy="11" r="6"></circle>
@@ -20,7 +20,7 @@
 				</svg>
 			</label>
 
-			<button class="filter-button" type="button" aria-label="Filter people">
+			<button class="filter-button" type="button" aria-label="Filter studenten" title="Filter studenten">
 				<svg viewBox="0 0 24 24" aria-hidden="true">
 					<path d="M4 7h16M4 12h16M4 17h16"></path>
 					<circle cx="9" cy="7" r="1.75"></circle>
@@ -39,8 +39,13 @@
 	}
 
 	.site-header {
-		background: white;
-		padding: 1.75rem 1.5rem 1.25rem;
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		border-bottom: 1px solid #ddd;
+		background: var(--white);
+		box-shadow: 0 2px 8px #eee;
+		padding: 1rem 1.25rem;
 	}
 
 	.site-navigation {
@@ -61,7 +66,7 @@
 	.logo-image {
 		display: block;
 		width: auto;
-		height: 2.625rem;
+		height: 3rem;
 		object-fit: contain;
 	}
 
@@ -75,17 +80,18 @@
 	.search-field {
 		display: flex;
 		align-items: center;
-		width: min(38vw, 10.25rem);
-		height: 2.5rem;
-		padding: 0 0.75rem 0 0.9rem;
-		border: 1px solid black;
+		width: min(49vw, 16rem);
+		height: 2.75rem;
+		padding: 0 0.75rem 0 1rem;
+		border: 1px solid #ccc;
 		border-radius: 999px;
-		box-shadow: 0 2px 5px rgb(0 0 0 / 12%);
+		background: white;
+		box-shadow: 0 1px 2px #eee;
 	}
 
 	.search-field:focus-within {
-		outline: 3px solid #1d70b8;
-		outline-offset: 2px;
+		border-color: var(--default-purple);
+		box-shadow: 0 0 0 3px hsl(268 62% 46% / 25%);
 	}
 
 	.search-field input {
@@ -99,7 +105,7 @@
 	}
 
 	.search-field input::placeholder {
-		color: #555;
+		color: #77786f;
 		opacity: 1;
 	}
 
@@ -118,12 +124,13 @@
 	.filter-button {
 		display: grid;
 		place-items: center;
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 2.75rem;
+		height: 2.75rem;
 		padding: 0;
-		border: 0;
-		background: white;
-		color: black;
+		border: 1px solid #ccc;
+		border-radius: 50%;
+		background: var(--light-purple);
+		color: white;
 		cursor: pointer;
 	}
 
@@ -134,12 +141,12 @@
 
 	.logo-link:focus-visible,
 	.filter-button:focus-visible {
-		outline: 3px solid #1d70b8;
+		outline: 3px solid var(--default-purple);
 		outline-offset: 3px;
 	}
 
 	.filter-button:hover {
-		background: #f2f2f2;
+		background: var(--default-purple);
 	}
 
 	.visually-hidden {
@@ -157,7 +164,7 @@
 	/* dit zorgt dat de zoekbalk op kleine schermen compact blijft */
 	@media (width >= 600px) {
 		.site-header {
-			padding: 1.75rem 2.5rem 1.25rem;
+			padding: 1rem 2.5rem;
 		}
 
 		.navigation-actions {
@@ -165,7 +172,7 @@
 		}
 
 		.search-field {
-			width: 10.25rem;
+			width: 16rem;
 		}
 	}
 </style>

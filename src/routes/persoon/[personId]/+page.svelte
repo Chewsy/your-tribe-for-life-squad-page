@@ -30,6 +30,7 @@
 
 </script>
 
+<main class="profile-page">
 <a class="back-link" href="/">← Back to overview</a>
 
 <header class="profile-header">
@@ -121,9 +122,11 @@
 		</section>
 	{/if}
 </div>
+</main>
 
 <style>
-:global(body) {
+
+.profile-page {
 	font-family: system-ui, sans-serif;
 	color: #1a1a1a;
 	max-width: 900px;

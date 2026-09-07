@@ -3,6 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	// hiermee haal ik de navigatie component erbij
 	import Navigation from '$lib/Navigation.svelte';
+	import Footer from '$lib/Footer.svelte';
 	import '$lib/styleguide.css';
 
 	// $props() pakt de props van deze layout, children is de pagina die erin komt
@@ -19,3 +20,4 @@
 <Navigation />
 <!-- hiermee render ik de inhoud van de pagina, bijv de cards -->
 {@render children()}
+<Footer />

@@ -6,7 +6,7 @@
 	--dark-purple: hsl(260, 35%, 10%);
 	--white: hsl(0, 0%, 98%);
 
-	--background: var(var(--white));
+	--background: var(--white);
 	--accent: var(--default-purple);
 	--secondary-accent: var(--light-purple);
 
