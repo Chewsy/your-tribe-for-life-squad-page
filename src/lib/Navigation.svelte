@@ -1,42 +1,28 @@
 <script>
-	// hiermee haal ik het fdnd logo uit de assets map
 	import fdndLogo from '$lib/assets/fdndlogo.png';
 </script>
 
-<!-- dit is de header die bovenaan de pagina staat -->
 <header class="site-header">
-	<!-- nav is voor alle navigatie dingen op de pagina -->
 	<nav class="site-navigation" aria-label="Main navigation">
-		<!-- hiermee kan je op het logo klikken om terug naar home te gaan -->
 		<a class="logo-link" href="/" aria-label="FDND home">
-			<!-- src pakt het geimporteerde logo en alt is voor screenreaders -->
 			<img class="logo-image" src={fdndLogo} alt="FDND" />
 		</a>
 
-		<!-- hierin zitten de zoekbalk en filter knop -->
 		<div class="navigation-actions">
-			<!-- label koppelt de zoekbalk bij elkaar -->
 			<label class="search-field">
 				<!-- deze tekst is alleen voor screenreaders -->
 				<span class="visually-hidden">Search</span>
-				<!-- dit is het vak waar je straks kan zoeken -->
-				<input type="search" placeholder="Search..." aria-label="Search" />
+				<input type="search" placeholder="Search..." />
 				<!-- dit svg is het vergrootglas icoon -->
 				<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
-					<!-- dit maakt de ronde vorm van het icoon -->
 					<circle cx="11" cy="11" r="6"></circle>
-					<!-- dit maakt het handvat van het vergrootglas -->
 					<path d="m16 16 4 4"></path>
 				</svg>
 			</label>
 
-			<!-- dit is de filter knop, aria-label legt uit wat hij doet -->
 			<button class="filter-button" type="button" aria-label="Filter people">
-				<!-- dit svg is het filter icoon -->
 				<svg viewBox="0 0 24 24" aria-hidden="true">
-					<!-- dit zijn de drie horizontale lijnen -->
 					<path d="M4 7h16M4 12h16M4 17h16"></path>
-					<!-- dit zijn de verstelpunten op de lijnen -->
 					<circle cx="9" cy="7" r="1.75"></circle>
 					<circle cx="15" cy="12" r="1.75"></circle>
 					<circle cx="11" cy="17" r="1.75"></circle>
@@ -168,6 +154,7 @@
 		border: 0;
 	}
 
+	/* dit zorgt dat de zoekbalk op kleine schermen compact blijft */
 	@media (width >= 600px) {
 		.site-header {
 			padding: 1.75rem 2.5rem 1.25rem;
