@@ -1,7 +1,7 @@
     <script>
     import closeIcon from '$lib/assets/close-icon.svg';
     import filterIcon from '$lib/assets/filter-icon.svg';
-	import '$lib/styleguide.css';
+	  import '$lib/styleguide.css';
 
     let {cities} = $props();
 

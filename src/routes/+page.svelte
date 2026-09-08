@@ -17,9 +17,18 @@
     const filteredPersons = $derived(
         data.persons.filter((person) => {
         const residency = page.url.searchParams.get("residency");
+        const bold = page.url.searchParams.get("bold");   
 
             if (residency && person.residency !== residency){
                 return false;
+            }
+
+            if (bold === "yes" && !person.is_bold) {
+            return false;
+            }
+
+            if (bold === "no" && person.is_bold) {
+            return false;
             }
 
             return true;
