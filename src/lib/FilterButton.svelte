@@ -18,10 +18,16 @@
         
       <fieldset>
         <legend>Squads</legend>
-          <label for="squads">Squad I</label>
-          <input type="checkbox" name="squad-I">
-          <label for="squads">Squad J</label>
-          <input type="checkbox" name="squad-J">
+        <div>
+          <label for="squads">
+            <input type="checkbox" name="squad-I">
+            Squad I
+          </label>
+          <label for="squads">
+            <input type="checkbox" name="squad-J">
+                Squad J
+          </label>
+        </div>
       </fieldset>
 
       <!-- <fieldset>
@@ -34,42 +40,48 @@
 
       <fieldset>
         <legend>Woonplaats</legend>
+        <div>
           <select name="residency">
           <option value="">Alle woonplaatsen</option>
           {#each cities as city}
           <option value="{city}">{city}</option>
           {/each}
           </select>
+        </div>
       </fieldset>
 
       <fieldset>
         <legend>Leeftijd</legend>
+        <div>
           <select name="age">
           <option value="">Alle leeftijden</option>
           <!-- <option value="{city}">{city}</option> -->
           </select>
+        </div>
       </fieldset>
 
       <fieldset>
         <legend>Favoriete seizoen</legend>
+        <div>
           <select name="season">
           <option value="">Alle seizoenen</option>
           <!-- <option value="{city}">{city}</option> -->
           </select>
+        </div>
       </fieldset>
 
       <fieldset>
         <legend>Is de persoon kaal?</legend>
-        <label for="bold-person">Ja<p>&#129458</p></label>
-        <input type="radio" name="bold" value="yes">
-        <label for="bold-person">Nee<p>&#128135</p></label>
-        <input type="radio" name="bold" value="no">
-      </fieldset>
-
-      <fieldset>
-        <legend>Favoriete kleur</legend>
-        <label for="fav-color">Kies de favoriete kleur:</label>
-        <input type="color" name="fav-color">
+        <div>
+          <label for="bold-person">
+            <input type="radio" name="bold" value="yes">
+            Ja<p>&#129458</p>
+          </label>
+          <label for="bold-person">
+            <input type="radio" name="bold" value="no">
+            Nee<p>&#128135</p>
+          </label>
+        </div>
       </fieldset>
       
       <button type="submit">Toepassen</button>
@@ -89,7 +101,7 @@
       display: flex;
       flex-direction: column;
       place-self: center;
-      gap: var(--space-sm);
+      gap: var(--space-xs);
     }
 
     button[popovertargetaction="hide"] {
@@ -102,7 +114,7 @@
 
     fieldset {
       border: 0;
-      padding: var(--space-md);
+      padding: var(--space-sm);
       padding-left: 0;
       display: flex;
       flex-direction: column;
@@ -110,11 +122,25 @@
     }
 
     legend {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 600;
       padding: var(--space-sm);
       padding-left: 0;
       padding-top: 0;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      gap: var(--space-md);
+      justify-content: flex-start;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      cursor: pointer;
     }
 
     button[type="submit"] {
