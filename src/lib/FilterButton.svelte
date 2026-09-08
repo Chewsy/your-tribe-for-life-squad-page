@@ -160,9 +160,9 @@
       font-size: var(--font-size);
     }
 
-    input:checked {
+  /*input:checked {
       background-color: var(--light-purple);
-    }
+    }*/    
 
     button[type="submit"] {
       position: sticky;
@@ -171,6 +171,32 @@
       font-size: var(--font-size);
       background-color: var(--default-purple);
       color: var(--white);
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      appearance: none;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 2px solid var(--default-purple);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      display: grid;
+      place-content: center;
+      margin: 0;
+    }
+
+    input[type="checkbox"]:checked,
+    input[type="radio"]:checked {
+      background-color: var(--default-purple);
+    }
+
+    input[type="checkbox"]:checked::after,
+    input[type="radio"]:checked::after {
+      content: "✓";
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
     }
 
     </style>
