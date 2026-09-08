@@ -8,6 +8,7 @@
 
 <style>
 	.skeleton {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		border: 0.094rem solid hsl(0, 0%, 77%);
@@ -15,9 +16,14 @@
 		overflow: hidden;
 	}
 
+	.skeleton-img,
+	.skeleton-text,
+	.skeleton-icon {
+		background: hsl(0, 0%, 93%);
+	}
+
 	.skeleton-img {
 		height: 9.375rem;
-		background: hsl(0, 0%, 93%);
 		border-top-left-radius: var(--radius-card);
 		border-top-right-radius: var(--radius-card);
 	}
@@ -27,7 +33,6 @@
 		align-items: center;
 		flex-direction: row;
 		justify-content: space-between;
-		background: transparent;
 		gap: var(--gap);
 		padding: var(--space-sm);
 		border-radius: var(--radius-card);
@@ -40,13 +45,33 @@
 		width: 80%;
 		max-width: 12.5rem;
 		border-radius: var(--radius);
-		background: hsl(0, 0%, 93%);
 	}
 
 	.skeleton-icon {
 		height: var(--space-md);
 		width: var(--space-md);
 		border-radius: 50%;
-		background: hsl(0, 0%, 93%);
+	}
+
+	/* Animatie bovenop skeleton card */
+	
+	.skeleton::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			110deg,
+			transparent 40%,
+			hsl(0, 0%, 100%, 0.35) 50%,
+			transparent 60%
+		);
+		transform: translateX(-100%);
+		animation: shiny 1.6s ease-in-out infinite;
+	}
+
+	@keyframes shiny {
+		to {
+			transform: translateX(100%);
+		}
 	}
 </style>
