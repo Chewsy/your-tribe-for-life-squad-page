@@ -1,10 +1,23 @@
 <script>
     import Card from "$lib/Card.svelte";
+    import FilterButton from "$lib/FilterButton.svelte";
 
     let { data } = $props();
+
+    // Lijst maken van alle woonplaatsen
+    let cities = [];
+    for (const person of data.persons) {
+        if (person.residency && !cities.includes(person.residency)) {
+            cities.push(person.residency);
+        }
+    }
+
 </script>
 
 <main>
+	
+    <FilterButton {cities} />
+
     <ul class="squad-list">
         {#each data.persons as person}
             <li class="squad-list-item">
