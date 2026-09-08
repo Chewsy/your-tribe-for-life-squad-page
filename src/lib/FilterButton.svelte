@@ -4,14 +4,17 @@
 	import '$lib/styleguide.css';
 
     let {cities} = $props();
+
+    function hideFilter(event) {
+        event.currentTarget.hidePopover();
+    }
     </script>
     
     <button type="button" popovertarget="filter-popover">
       <img src={filterIcon} alt="Filter openen" width="25" height="25">
     </button>
 
-    <form id="filter-popover" popover method="GET"
-      action="/">
+    <form id="filter-popover" popover method="GET" action="/" onsubmit={hideFilter}>
 
         <button type="button" popovertarget="filter-popover" popovertargetaction="hide">
           <img src={closeIcon} alt="Filter sluiten" width="20" height="20">
@@ -47,7 +50,7 @@
           <select name="residency">
           <option value="">Alle woonplaatsen</option>
           {#each cities as city}
-          <option value="{city}">{city}</option>
+          <option value={city}>{city}</option>
           {/each}
           </select>
         </div>
@@ -114,7 +117,7 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
-    button[popovertargetaction="hide"] {
+    button[popovertargetaction="hide"]:first-child {
       align-self: flex-end;
       border: 0;
       background: none;

@@ -1,7 +1,8 @@
 <script>
     import Card from "$lib/Card.svelte";
     import FilterButton from "$lib/FilterButton.svelte";
-
+    import { page } from "$app/state";
+    
     let { data } = $props();
 
     // Lijst maken van alle woonplaatsen
@@ -12,6 +13,19 @@
         }
     }
 
+    // Personen filteren
+    const filteredPersons = $derived(
+        data.persons.filter((person) => {
+        const residency = page.url.searchParams.get("residency");
+
+            if (residency && person.residency !== residency){
+                return false;
+            }
+
+            return true;
+        })
+    )
+
 </script>
 
 <main>
@@ -19,7 +33,7 @@
     <FilterButton {cities} />
 
     <ul class="squad-list">
-        {#each data.persons as person}
+        {#each filteredPersons as person}
             <li class="squad-list-item">
                 <Card {person} />
             </li>
