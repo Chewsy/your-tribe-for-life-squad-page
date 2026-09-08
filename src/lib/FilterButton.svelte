@@ -111,6 +111,7 @@
       gap: var(--space-xs);
       border-radius: 2rem;
       border: .5px solid var(--dark-purple);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
     button[popovertargetaction="hide"] {
