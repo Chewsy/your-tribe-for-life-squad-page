@@ -1,6 +1,7 @@
     <script>
     import closeIcon from '$lib/assets/close-icon.svg';
     import filterIcon from '$lib/assets/filter-icon.svg';
+	import '$lib/styleguide.css';
 
     let {cities} = $props();
     </script>
@@ -97,6 +98,10 @@
       border: 1px solid var(--dark-purple);
       max-height: 80dvh;
       overflow-y: auto;
+      font-family: var(--font);
+      color: var(--dark-purple);
+      padding-right: var(--space-lg);
+      padding-left: var(--space-lg);
     }
 
     form:popover-open {
@@ -104,6 +109,8 @@
       flex-direction: column;
       place-self: center;
       gap: var(--space-xs);
+      border-radius: 2rem;
+      border: .5px solid var(--dark-purple);
     }
 
     button[popovertargetaction="hide"] {
@@ -112,6 +119,7 @@
       background: none;
       cursor: pointer;
       padding: 0;
+      fill: var(--default-purple);
     }
 
     fieldset {
@@ -128,12 +136,11 @@
       font-weight: 600;
       padding: var(--space-sm);
       padding-left: 0;
-      padding-top: 0;
     }
 
     div {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       gap: var(--space-md);
       justify-content: flex-start;
     }
@@ -143,6 +150,14 @@
       align-items: center;
       gap: var(--space-xs);
       cursor: pointer;
+    }
+
+    input {
+      font-size: var(--font-size);
+    }
+
+    input:checked {
+      background-color: var(--light-purple);
     }
 
     button[type="submit"] {
