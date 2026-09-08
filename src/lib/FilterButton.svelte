@@ -117,11 +117,14 @@
       place-self: center;
       gap: var(--space-xs);
       border-radius: 2rem;
-      border: .5px solid var(--dark-purple);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      border: none;
+      box-shadow:  
+        0 0 12px rgba(255, 255, 255, 0.9),
+        0 0 30px rgba(255, 255, 255, 0.5),
+        0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
-    button[popovertargetaction="hide"]:first-child {
+    button[popovertargetaction="hide"] {
       align-self: flex-end;
       border: 0;
       background: none;
@@ -162,19 +165,28 @@
 
     input {
       font-size: var(--font-size);
-    }
-
-  /*input:checked {
-      background-color: var(--light-purple);
-    }*/    
+    }   
 
     button[type="submit"] {
       position: sticky;
       bottom: 0;
       padding: var(--space-sm);
       font-size: var(--font-size);
-      background-color: var(--default-purple);
+      border: none;
+      box-shadow:
+      rgba(0, 0, 0, 0.25) 0px 14px 28px, 
+      rgba(0, 0, 0, 0.22) 0px 10px 10px
+      ;
+      border-radius: .6rem;
+      background: linear-gradient(to right,
+      var(--default-purple),
+      var(--light-purple)
+      );
       color: var(--white);
+      font-weight: 600;
+      text-shadow:
+        0 0 2px rgba(255, 255, 255, 0.6),
+        0 0 1px rgba(255, 255, 255, 0.25);
     }
 
     input[type="checkbox"],
