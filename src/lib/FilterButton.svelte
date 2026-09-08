@@ -80,6 +80,10 @@
         <legend>Is de persoon kaal?</legend>
         <div>
           <label>
+            <input type="radio" name="bold" value="" checked>
+            Alle
+          </label>
+          <label>
             <input type="radio" name="bold" value="yes">
             Ja<p>&#129458</p>
           </label>
