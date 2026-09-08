@@ -13,24 +13,26 @@
       action="/">
 
         <button type="button" popovertarget="filter-popover" popovertargetaction="hide">
-          <img src={closeIcon} alt="Filter sluiten" width="25" height="25">
+          <img src={closeIcon} alt="Filter sluiten" width="20" height="20">
         </button>
         
       <fieldset>
         <legend>Squads</legend>
         <div>
-          <label for="squads">
+          <label>
             <input type="checkbox" name="squad-I">
             Squad I
           </label>
-          <label for="squads">
+          <label>
             <input type="checkbox" name="squad-J">
                 Squad J
           </label>
         </div>
       </fieldset>
 
-      <!-- <fieldset>
+      <!-- DEZE IS UIT DE LIJST GEHAALD OMDAT HET TE LANG WERD
+       HIER KUNNEN WE KNOPPEN VAN MAKEN BUITEN DE FILTER
+      <fieldset>
         <legend>Alfabetisch</legend>
         <label for="name-sorting">A - Z</label>
         <input type="radio" name="name-sorting" value="a-z">
@@ -73,11 +75,11 @@
       <fieldset>
         <legend>Is de persoon kaal?</legend>
         <div>
-          <label for="bold-person">
+          <label>
             <input type="radio" name="bold" value="yes">
             Ja<p>&#129458</p>
           </label>
-          <label for="bold-person">
+          <label>
             <input type="radio" name="bold" value="no">
             Nee<p>&#128135</p>
           </label>
