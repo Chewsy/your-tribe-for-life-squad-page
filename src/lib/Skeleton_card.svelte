@@ -74,4 +74,10 @@
 			transform: translateX(100%);
 		}
 	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.skeleton::after {
+			display: none;
+		}
+	}
 </style>
