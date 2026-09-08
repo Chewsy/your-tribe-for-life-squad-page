@@ -10,10 +10,14 @@
 	--accent: var(--default-purple);
 	--secondary-accent: var(--light-purple);
 
+	--skeleton-gray: hsl(0, 0%, 93%);
+
 	/* Lettertype */
 	--font: system-ui, sans-serif;
-	--font-size: 1rem; /* volgens a11y */
-	--line-height: 1.5; /* volgens a11y */
+	--font-size: 1rem;
+	/* volgens a11y */
+	--line-height: 1.5;
+	/* volgens a11y */
 
 	/* Font weight */
 	--bold: 700;
@@ -27,8 +31,9 @@
 
 	--gap: 0.625rem;
 
-	/* Border radius - 10px */
+	/* Border radius */
 	--radius: 0.625rem;
+	--radius-card: 1.875rem;
 }
 
 /* Globale styling */
