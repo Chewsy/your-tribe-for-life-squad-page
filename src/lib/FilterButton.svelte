@@ -34,16 +34,6 @@
         </div>
       </fieldset>
 
-      <!-- DEZE IS UIT DE LIJST GEHAALD OMDAT HET TE LANG WERD
-       HIER KUNNEN WE KNOPPEN VAN MAKEN BUITEN DE FILTER
-      <fieldset>
-        <legend>Alfabetisch</legend>
-        <label for="name-sorting">A - Z</label>
-        <input type="radio" name="name-sorting" value="a-z">
-        <label for="name-sorting">Z - A</label>
-        <input type="radio" name="name-sorting" value="z-a">
-      </fieldset> -->
-
       <fieldset>
         <legend>Woonplaats</legend>
         <div>
@@ -72,7 +62,7 @@
           <select name="season">
           <option value="">Alle seizoenen</option>
           {#each seasons as season}
-          <option value="{season}">{season}</option>
+          <option value={season}>{season}</option>
           {/each}
           </select>
         </div>
