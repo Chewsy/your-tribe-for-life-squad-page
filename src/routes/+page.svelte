@@ -1,10 +1,14 @@
 <script>
     import Card from "$lib/Card.svelte";
 
+    import Sort from "$lib/SortButtons.svelte";
     let { data } = $props();
 </script>
 
 <main>
+
+    <Sort></Sort>
+
     <ul class="squad-list">
         {#each data.persons as person}
             <li class="squad-list-item">
