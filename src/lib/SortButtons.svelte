@@ -1,11 +1,21 @@
 <script>
-
+    let { sortOrder, onSort } = $props();
 </script>
      
     <div class="sorting-buttons-wrapper">
-        <button type="button">A - Z</button>
-
-        <button type="button">Z - A</button>
+        <button 
+        type="button" 
+        class:active={sortOrder === 'asc'} 
+        onclick={() => onSort('asc')}
+        >A - Z
+        </button>
+        
+        <button 
+        type="button" 
+        class:active={sortOrder === 'desc'} 
+        onclick={() => onSort('desc')}
+        >Z - A
+        </button>
     </div>
 
     

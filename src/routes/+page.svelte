@@ -3,14 +3,43 @@
 
     import Sort from "$lib/SortButtons.svelte";
     let { data } = $props();
+
+    let sortOrder = $state('asc');
+
+    function makeSort(newOrder) {
+        sortOrder = newOrder;
+    }
+
+    let sortedPersons = $derived(getSortedPersons());
+
+    function getSortedPersons() {
+        let copy = [];
+        for (let i = 0; i < data.persons.length; i++) {
+            copy.push(data.persons[i]);
+    }
+
+    copy.sort(function (a, b) {
+        let nameA = a.name.toLowerCase();
+        let nameB = b.name.toLowerCase();
+
+        if (sortOrder === 'asc') {
+            return nameA.localeCompare(nameB);
+        } else {
+            return nameB.localeCompare(nameA);
+        }
+    });
+
+    return copy
+
+    }
 </script>
 
 <main>
 
-    <Sort></Sort>
+    <Sort {sortOrder} onSort={makeSort} />
 
     <ul class="squad-list">
-        {#each data.persons as person}
+        {#each sortedPersons as person (person.id)}
             <li class="squad-list-item">
                 <Card {person} />
             </li>
