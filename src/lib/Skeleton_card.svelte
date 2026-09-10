@@ -32,16 +32,18 @@
 		display: flex;
 		align-items: center;
 		flex-direction: row;
-		justify-content: space-between;
+		justify-content: space-around;
+		padding-left: var(--space-sm);
+		padding-right: var(--space-sm);
 		gap: var(--gap);
-		padding: var(--space-sm);
 		border-radius: var(--radius-card);
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
+		height: var(--space-md);
 	}
 
 	.skeleton-text {
-		height: var(--space-md);
+		height: var(--space-sm);
 		width: 80%;
 		max-width: 12.5rem;
 		border-radius: var(--radius);
@@ -54,7 +56,7 @@
 	}
 
 	/* Animatie bovenop skeleton card */
-	
+
 	.skeleton::after {
 		content: "";
 		position: absolute;
