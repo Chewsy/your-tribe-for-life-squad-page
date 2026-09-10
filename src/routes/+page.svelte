@@ -13,11 +13,20 @@
         }
     }
 
+    // Lijst maken van alle seizoenen
+    let seasons = []
+    for (const person of data.persons) {
+        if (person.fav_season && !seasons.includes(person.fav_season)) {
+            seasons.push(person.fav_season);
+        }
+    }    
+
     // Personen filteren
     const filteredPersons = $derived(
         data.persons.filter((person) => {
         const residency = page.url.searchParams.get("residency");
         const bold = page.url.searchParams.get("bold");   
+        const season = page.url.searchParams.get("season"); 
 
             if (residency && person.residency !== residency){
                 return false;
@@ -31,6 +40,10 @@
             return false;
             }
 
+            if (season && person.fav_season !== season) {
+            return false;
+            }
+
             return true;
         })
     )
@@ -39,7 +52,7 @@
 
 <main>
 	
-    <FilterButton {cities} />
+    <FilterButton {cities} {seasons} />
 
     <ul class="squad-list">
         {#each filteredPersons as person}

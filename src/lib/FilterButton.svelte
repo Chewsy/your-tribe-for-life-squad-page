@@ -3,7 +3,7 @@
     import filterIcon from '$lib/assets/filter-icon.svg';
 	  import '$lib/styleguide.css';
 
-    let {cities} = $props();
+    let {cities, seasons = ['Lente', 'Zomer', 'Herfst', 'Winter']} = $props();
 
     function hideFilter(event) {
         event.currentTarget.hidePopover();
@@ -71,7 +71,9 @@
         <div>
           <select name="season">
           <option value="">Alle seizoenen</option>
-          <!-- <option value="{city}">{city}</option> -->
+          {#each seasons as season}
+          <option value="{season}">{season}</option>
+          {/each}
           </select>
         </div>
       </fieldset>
@@ -151,9 +153,10 @@
 
     div {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: var(--space-md);
       justify-content: flex-start;
+      padding-bottom: var(--space-xs);
     }
 
     label {
@@ -215,4 +218,24 @@
       font-weight: bold;
     }
 
+    select {
+      appearance: none;
+      width: 100%;
+      border: 1px solid var(--default-purple);
+      border-radius: 0.6rem;
+      padding:  var(--space-sm);
+      font-size: var(--font-size);
+      color: var(--dark-purple);
+      background-color: white;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236d28d9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      background-repeat: no-repeat;
+      background-position: right var(--space-sm) center;
+      background-size: 1rem;
+      cursor: pointer;
+    }
+
+    select:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--default-purple) 20%, transparent);
+    }
     </style>
