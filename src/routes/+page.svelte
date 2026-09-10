@@ -15,29 +15,29 @@
 </main>
 
 <style>
-    * {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    main {
+        width: min(100% - 2rem, 1280px);
+        margin: 0 auto;
+        padding: 2rem 0 3rem;
     }
 
     .squad-list {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-        gap: 1em;
-        align-items: start;
-        justify-items: stretch;
-        padding: 0.5em;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: stretch;
 
-        /* From 500px is the width for the cards wider */
-        @media (width >= 500px) {
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        @media (width >= 768px) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
-        /* On big screen */
-        @media (width >= 900px) {
-            padding-left: 1em;
-            padding-right: 1em;
+        @media (width >= 1024px) {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
         }
     }
+
+    .squad-list-item {
+        min-width: 0;
+    }
+
 </style>
