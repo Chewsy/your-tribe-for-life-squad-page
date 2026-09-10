@@ -47,8 +47,7 @@
       background-color: var(--light-purple);
     }
 
-    button.active,
-    button:active
+    button.active
      {
       background-image: none;
       background-color: var(--default-purple);
