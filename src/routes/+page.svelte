@@ -113,7 +113,12 @@
         background: var(--default-purple);
         padding: var(--space-sm);
         border-radius: 0.5rem;
-       
+        transition: transform 150ms ease, box-shadow 150ms ease;
+
+            &:hover {
+            transform: translateY(2px);
+            box-shadow: 0 8px 16px var(--light-purple);
+            }
         }
     }
   
