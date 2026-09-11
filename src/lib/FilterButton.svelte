@@ -24,11 +24,11 @@
         <legend>Squads</legend>
         <div>
           <label>
-            <input type="checkbox" name="squad-I">
+            <input type="checkbox" name="squad-I" value="I">
             Squad I
           </label>
           <label>
-            <input type="checkbox" name="squad-J">
+            <input type="checkbox" name="squad-J" value="J">
                 Squad J
           </label>
         </div>
