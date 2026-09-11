@@ -13,7 +13,7 @@ export async function load() {
         ...person,
         image: person.mugshot
             ? `${endpointBase}/assets/${person.mugshot}`
-            : person.avatar ?? null,
+            : null,
     }));
 
     return { persons };
