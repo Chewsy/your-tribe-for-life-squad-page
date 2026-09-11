@@ -59,6 +59,11 @@
             <li class="squad-list-item">
                 <Card {person} />
             </li>
+        {:else}
+         <p class="empty-state">
+            Geen personen gevonden met deze filters.
+            <a href="/">Wis alle filters</a>
+        </p>  
         {/each}
     </ul>
 </main>
@@ -89,4 +94,27 @@
             padding-right: 1em;
         }
     }
+
+    .empty-state {
+        text-align: center;
+        padding: var(--space-lg, 2rem);
+        color: var(--dark-purple);
+        font-size: var(--font-size);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm, 0.75rem);
+
+
+        a {
+        display: inline-block;
+        color: var(--white);
+        font-weight: 600;
+        background: var(--default-purple);
+        padding: var(--space-sm);
+        border-radius: 0.5rem;
+       
+        }
+    }
+  
 </style>

@@ -24,7 +24,11 @@
 
 
 <article class="student-card">
-    <img src={`https://fdnd.directus.app/assets/${person.mugshot}`} alt={person.name} class="mugshot" width="200" height="200"/>
+    {#if person.image}
+      <img src={person.image} alt={person.name} class="mugshot" width="200" height="200"/>
+    {:else}
+      <img src="/img-fallback.png" alt="Geen foto beschikbaar" class="mugshot" width="200" height="200"/>
+    {/if}
     
     <div class="info-bar">
       <div class="person-text">
