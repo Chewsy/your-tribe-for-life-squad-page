@@ -24,82 +24,105 @@
 
 
 <article class="student-card">
-    <img src={`https://fdnd.directus.app/assets/${person.mugshot}`} alt={person.name} class="mugshot" width="200" height="200"/>
-    
+  <a class="card-link" href="/persoon/{person.id}" aria-label={`Bekijk profiel van ${person.name}`}>
+    <div class="portrait">
+      <img src={person.image} alt={person.name} class="mugshot" width="320" height="240" />
+    </div>
+
     <div class="info-bar">
       <div class="person-text">
-        <h2>{person.name},</h2>
-        <p>{age}</p>
+        <h2>{person.name}</h2>
+        <p>{age} jaar</p>
       </div>
-      <a href="/persoon/{person.id}">
-        <img src={arrowIcon} alt="Bekijk profiel van {person.name} " class="arrow-icon" width="12" height="12"/> 
-      </a>
+      <span class="profile-arrow" aria-hidden="true">
+        <img src={arrowIcon} alt="" class="arrow-icon" width="12" height="12" />
+      </span>
     </div>
+  </a>
 </article>
 
 <style>
-
   * {
     box-sizing: border-box;
-    font-family: "Gill Sans", sans-serif;
   }
 
   .student-card {
-    display: flex;
-    flex-direction: column;
-
-    .mugshot {
-      width: 100%;
-      height: 150px;
-      aspect-ratio: 1 / 1;
-      object-fit: cover ;
-      border-radius: 30px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      border:1.5px solid black;
-      border-bottom: 0;
-    }
-
-    .info-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-radius: 30px;
-      border-top-right-radius: 0;
-      border-top-left-radius: 0;
-      border:1.5px solid black;
-      border-top: 0;
-
-      .person-text {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: .25em;
-        padding-left: .8em;
-        border-radius: 30px;
-        font-style: italic;
-
-        h2 {
-          font-size: 16px;
-          font-weight: 500;
-        }
-
-        p {
-          font-size: 16px;
-          font-weight: 500;
-        }
-      }
-
-      a {
-        padding-right: .5em;
-
-        .arrow-icon {
-          font-size: 16px;
-        }
-      }
-    }
-
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    background: var(--white);
+    box-shadow: 0 4px 12px #ddd;
   }
 
+  .student-card:hover {
+    box-shadow: 0 6px 16px #ccc;
+  }
+
+  .card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .portrait {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #dce3df;
+  }
+
+  .mugshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .info-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    min-height: 4.8rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .person-text h2 {
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .person-text p {
+    margin-top: 0.25rem;
+    color: #5b5d57;
+    font-size: 0.875rem;
+  }
+
+  .card-link:focus-visible {
+    outline: 3px solid var(--default-purple);
+    outline-offset: -3px;
+  }
+
+  .profile-arrow {
+    display: grid;
+    flex: 0 0 auto;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--light-purple);
+  }
+
+  .arrow-icon {
+    filter: brightness(0) invert(1);
+  }
+
+  .student-card:hover .profile-arrow {
+    background: var(--default-purple);
+  }
 </style>
