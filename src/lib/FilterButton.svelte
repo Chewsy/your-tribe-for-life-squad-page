@@ -16,23 +16,9 @@
 
     <form id="filter-popover" popover method="GET" action="/" onsubmit={hideFilter}>
 
-        <button type="button" popovertarget="filter-popover" popovertargetaction="hide">
-          <img src={closeIcon} alt="Filter sluiten" width="20" height="20">
-        </button>
-        
-      <fieldset>
-        <legend>Squads</legend>
-        <div>
-          <label>
-            <input type="checkbox" name="squad-I" value="I">
-            Squad I
-          </label>
-          <label>
-            <input type="checkbox" name="squad-J" value="J">
-                Squad J
-          </label>
-        </div>
-      </fieldset>
+      <button type="button" popovertarget="filter-popover" popovertargetaction="hide">
+        <img src={closeIcon} alt="Filter sluiten" width="20" height="20">
+      </button>
 
       <fieldset>
         <legend>Woonplaats</legend>
@@ -42,16 +28,6 @@
           {#each cities as city}
           <option value={city}>{city}</option>
           {/each}
-          </select>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Leeftijd</legend>
-        <div>
-          <select name="age">
-          <option value="">Alle leeftijden</option>
-          <!-- <option value="{city}">{city}</option> -->
           </select>
         </div>
       </fieldset>
@@ -107,7 +83,7 @@
       display: flex;
       flex-direction: column;
       place-self: center;
-      gap: var(--space-xs);
+      gap: var(--space-sm);
       border-radius: 2rem;
       border: none;
       box-shadow:  
@@ -163,7 +139,7 @@
       padding-left: 0;
       display: flex;
       flex-direction: column;
-      gap: var(--space-xs);
+      padding-bottom: var(--space-md);
     }
 
     legend {
@@ -196,12 +172,10 @@
       position: sticky;
       bottom: 0;
       padding: var(--space-sm);
+      margin-bottom: var(--space-sm);
       font-size: var(--font-size);
       border: none;
-      box-shadow:
-      rgba(0, 0, 0, 0.25) 0px 14px 28px, 
-      rgba(0, 0, 0, 0.22) 0px 10px 10px
-      ;
+      box-shadow: var(--light-purple) 0px 0px 10px 2px;
       border-radius: .6rem;
       background: linear-gradient(to right,
       var(--default-purple),
@@ -214,7 +188,6 @@
         0 0 1px rgba(255, 255, 255, 0.25);
     }
 
-    input[type="checkbox"],
     input[type="radio"] {
       appearance: none;
       width: 1.5rem;
@@ -227,12 +200,10 @@
       margin: 0;
     }
 
-    input[type="checkbox"]:checked,
     input[type="radio"]:checked {
       background-color: var(--default-purple);
     }
 
-    input[type="checkbox"]:checked::after,
     input[type="radio"]:checked::after {
       content: "✓";
       color: var(--white);
