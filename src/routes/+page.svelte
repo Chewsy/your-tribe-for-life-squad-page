@@ -41,10 +41,10 @@
                 <Card {person} />
             </li>
         {:else}
-         <p class="empty-state">
+         <li class="empty-state">
             Geen personen gevonden met deze filters.
             <a href="/">Wis alle filters</a>
-        </p>  
+         </li>  
         {/each}
     </ul>
 </main>
@@ -72,6 +72,7 @@
     }
 
     .empty-state {
+        grid-column: 1 / -1;
         text-align: center;
         padding: var(--space-lg, 2rem);
         color: var(--dark-purple);
@@ -79,20 +80,22 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         gap: var(--space-sm, 0.75rem);
+        min-height: 50dvh;
 
 
         a {
-        display: inline-block;
         color: var(--white);
         font-weight: 600;
         background: var(--default-purple);
         padding: var(--space-sm);
         border-radius: 0.5rem;
+        text-decoration: none;
         transition: transform 150ms ease, box-shadow 150ms ease;
 
             &:hover {
-            transform: translateY(2px);
+            transform: translateY(-2px);
             box-shadow: 0 8px 16px var(--light-purple);
             }
         }
