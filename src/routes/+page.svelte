@@ -3,23 +3,7 @@
     import FilterButton from "$lib/FilterButton.svelte";
     import { page } from "$app/state";
     
-    let { data } = $props();
-
-    // Lijst maken van alle woonplaatsen
-    let cities = [];
-    for (const person of data.persons) {
-        if (person.residency && !cities.includes(person.residency)) {
-            cities.push(person.residency);
-        }
-    }
-
-    // Lijst maken van alle seizoenen
-    let seasons = []
-    for (const person of data.persons) {
-        if (person.fav_season && !seasons.includes(person.fav_season)) {
-            seasons.push(person.fav_season);
-        }
-    }    
+    let { data } = $props();   
 
     // Personen filteren
     const filteredPersons = $derived(
@@ -51,9 +35,6 @@
 </script>
 
 <main>
-	
-    <FilterButton {cities} {seasons} />
-
     <ul class="squad-list">
         {#each filteredPersons as person}
             <li class="squad-list-item">

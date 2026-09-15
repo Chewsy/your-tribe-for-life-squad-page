@@ -7,7 +7,7 @@
 	import '$lib/styleguide.css';
 
 	// $props() pakt de props van deze layout, children is de pagina die erin komt
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 
 <!-- dit is voor dingen die in de head van de pagina moeten staan -->
@@ -17,7 +17,7 @@
 </svelte:head>
 
 <!-- dit laat de navigatie bovenaan elke pagina zien -->
-<Navigation />
+<Navigation cities={data.cities} seasons={data.seasons} />
 <!-- hiermee render ik de inhoud van de pagina, bijv de cards -->
 {@render children()}
 <Footer />

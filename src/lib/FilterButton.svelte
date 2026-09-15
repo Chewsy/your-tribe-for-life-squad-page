@@ -3,14 +3,14 @@
     import filterIcon from '$lib/assets/filter-icon.svg';
 	  import '$lib/styleguide.css';
 
-    let {cities, seasons = ['Lente', 'Zomer', 'Herfst', 'Winter']} = $props();
+    let {cities, seasons} = $props();
 
     function hideFilter(event) {
-        event.currentTarget.hidePopover();
+      event.currentTarget.hidePopover();
     }
     </script>
     
-    <button type="button" popovertarget="filter-popover">
+    <button type="button" popovertarget="filter-popover" class="filter-button">
       <img src={filterIcon} alt="Filter openen" width="25" height="25">
     </button>
 
@@ -115,6 +115,38 @@
         0 0 30px rgba(255, 255, 255, 0.5),
         0 8px 24px rgba(0, 0, 0, 0.15);
     }
+
+	  .filter-button img {
+		  width: 1.5rem;
+		  height: 1.5rem;
+		  flex: 0 0 auto;
+		  fill: none;
+		  stroke-linecap: round;
+		  stroke-linejoin: round;
+		  stroke-width: 1.75;
+	  }
+
+	  .filter-button {
+		  display: grid;
+		  place-items: center;
+		  width: 2.75rem;
+		  height: 2.75rem;
+		  padding: 0;
+		  border: 1px solid #ccc;
+		  border-radius: 50%;
+		  background: var(--light-purple);
+		  color: white;
+		  cursor: pointer;
+	  }
+
+	  .filter-button:focus-visible {
+		  outline: 3px solid var(--default-purple);
+		  outline-offset: 3px;
+	  }
+
+	  .filter-button:hover {
+		  background: var(--default-purple);
+	  }
 
     button[popovertargetaction="hide"] {
       align-self: flex-end;
