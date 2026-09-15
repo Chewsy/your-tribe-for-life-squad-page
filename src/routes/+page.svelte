@@ -95,8 +95,12 @@
         transition: transform 150ms ease, box-shadow 150ms ease;
 
             &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px var(--light-purple);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 16px var(--light-purple);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
             }
         }
     }
