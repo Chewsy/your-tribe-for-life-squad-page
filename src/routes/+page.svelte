@@ -2,7 +2,6 @@
     import Card from "$lib/Card.svelte";
     import FilterButton from "$lib/FilterButton.svelte";
     import { page } from "$app/state";
-    import SkeletonCard from "$lib/Skeleton_card.svelte";
     import Sort from "$lib/SortButtons.svelte";
     
     let { data } = $props();
@@ -78,30 +77,6 @@
             <a href="/">Wis alle filters</a>
          </li>  
         {/each}
-    <p class="visually-hidden" role="status">
-        {#await data.persons}
-            De squad wordt geladen.
-        {:then}
-            De squad is ingeladen.
-        {:catch error}
-            Er ging iets mis met het laden van de squad. Ververs de pagina.
-        {/await}
-    </p>
-
-    <ul class="squad-list">
-        {#await data.persons}
-            {#each Array(24) as _}
-                <li class="squad-list-item">
-                    <SkeletonCard />
-                </li>
-            {/each}
-        {:then persons}
-            {#each persons as person}
-                <li class="squad-list-item">
-                    <Card {person} />
-                </li>
-            {/each}
-        {/await}
     </ul>
 </main>
 
@@ -165,13 +140,4 @@
         min-width: 0;
     }
 
-    .visually-hidden {
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
-    }
 </style>
