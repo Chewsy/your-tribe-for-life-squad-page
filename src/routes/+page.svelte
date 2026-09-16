@@ -2,15 +2,17 @@
     import Card from "$lib/Card.svelte";
     import FilterButton from "$lib/FilterButton.svelte";
     import { page } from "$app/state";
+    import SkeletonCard from "$lib/Skeleton_card.svelte";
+    import Sort from "$lib/SortButtons.svelte";
     
-    let { data } = $props();   
+    let { data } = $props();
 
-    // Personen filteren
+    // personen filteren
     const filteredPersons = $derived(
         data.persons.filter((person) => {
         const residency = page.url.searchParams.get("residency");
-        const bold = page.url.searchParams.get("bold");   
-        const season = page.url.searchParams.get("season"); 
+        const bold = page.url.searchParams.get("bold");
+        const season = page.url.searchParams.get("season");
 
             if (residency && person.residency !== residency){
                 return false;
@@ -32,11 +34,41 @@
         })
     )
 
+    let sortOrder = $state('asc');
+
+    function makeSort(newOrder) {
+        sortOrder = newOrder;
+    }
+
+    let sortedPersons = $derived(getSortedPersons());
+
+    function getSortedPersons() {
+        let copy = [];
+        for (let i = 0; i < filteredPersons.length; i++) {
+            copy.push(filteredPersons[i]);
+        }
+
+        copy.sort(function (a, b) {
+            let nameA = a.name.toLowerCase();
+            let nameB = b.name.toLowerCase();
+
+            if (sortOrder === 'asc') {
+                return nameA.localeCompare(nameB);
+            } else {
+                return nameB.localeCompare(nameA);
+            }
+        });
+
+        return copy
+    }
 </script>
 
 <main>
+
+    <Sort {sortOrder} onSort={makeSort} />
+
     <ul class="squad-list">
-        {#each filteredPersons as person}
+{#each sortedPersons as person (person.id)}
             <li class="squad-list-item">
                 <Card {person} />
             </li>
@@ -46,6 +78,30 @@
             <a href="/">Wis alle filters</a>
          </li>  
         {/each}
+    <p class="visually-hidden" role="status">
+        {#await data.persons}
+            De squad wordt geladen.
+        {:then}
+            De squad is ingeladen.
+        {:catch error}
+            Er ging iets mis met het laden van de squad. Ververs de pagina.
+        {/await}
+    </p>
+
+    <ul class="squad-list">
+        {#await data.persons}
+            {#each Array(24) as _}
+                <li class="squad-list-item">
+                    <SkeletonCard />
+                </li>
+            {/each}
+        {:then persons}
+            {#each persons as person}
+                <li class="squad-list-item">
+                    <Card {person} />
+                </li>
+            {/each}
+        {/await}
     </ul>
 </main>
 
@@ -109,4 +165,13 @@
         min-width: 0;
     }
 
+    .visually-hidden {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
 </style>
