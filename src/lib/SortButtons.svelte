@@ -22,20 +22,20 @@
   .sorting-buttons-wrapper {
     display: flex;
     flex-direction: row;
-    gap: 0.8rem;
+    gap: var(--space-sm);
   }
 
   button {
     padding: var(--space-sm) var(--space-md);
     font-size: var(--font-size);
-    font-weight: 600;
+    font-weight: var(--bold);
     background-image: linear-gradient(
       to right,
       var(--default-purple),
       var(--light-purple)
     );
     border: none;
-    border-radius: 0.6rem;
+    border-radius: var(--radius);
     width: 4.5rem;
     color: var(--white);
     box-shadow: var(--light-purple) 0px 0px 10px 2px;
