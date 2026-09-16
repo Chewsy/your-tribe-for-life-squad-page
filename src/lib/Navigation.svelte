@@ -13,10 +13,8 @@
 
 		<div class="navigation-actions">
 			<label class="search-field">
-				<!-- deze tekst is alleen voor screenreaders -->
 				<span class="visually-hidden">Search</span>
 				<input type="search" placeholder="Zoek een student" />
-				<!-- dit svg is het vergrootglas icoon -->
 				<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
 					<circle cx="11" cy="11" r="6"></circle>
 					<path d="m16 16 4 4"></path>
@@ -121,19 +119,6 @@
 		outline-offset: 3px;
 	}
 
-	.visually-hidden {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-		border: 0;
-	}
-
-	/* dit zorgt dat de zoekbalk op kleine schermen compact blijft */
 	@media (width >= 600px) {
 		.site-header {
 			padding: 1rem 2.5rem;
