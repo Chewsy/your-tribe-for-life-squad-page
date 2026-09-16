@@ -19,6 +19,7 @@
     }
 
     const age = $derived(calculateAge(person.birthdate));
+    let imageSrc = $state(person.image || '/img-fallback.png');
 
 </script>
 
@@ -26,7 +27,7 @@
 <article class="student-card">
   <a class="card-link" href="/persoon/{person.id}" aria-label={`Bekijk profiel van ${person.name}`}>
     <div class="portrait">
-      <img src={person.image} alt={person.name} class="mugshot" width="320" height="240" />
+      <img src={imageSrc} alt={person.name} class="mugshot" width="320" height="240" onerror={() => (imageSrc = '/img-fallback.png')}/>
     </div>
 
     <div class="info-bar">
