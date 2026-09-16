@@ -2,7 +2,7 @@
 	import fdndLogo from '$lib/assets/fdndlogo.png';
 	import FilterButton from '$lib/FilterButton.svelte';
 
-	let { cities, seasons } = $props();
+	let { cities = [], seasons = [] } = $props();
 </script>
 
 <header class="site-header">

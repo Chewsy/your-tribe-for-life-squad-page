@@ -3,7 +3,7 @@
     import filterIcon from '$lib/assets/filter-icon.svg';
 	  import '$lib/styleguide.css';
 
-    let {cities, seasons} = $props();
+    let {cities = [], seasons = []} = $props();
 
     function hideFilter(event) {
       event.currentTarget.hidePopover();
