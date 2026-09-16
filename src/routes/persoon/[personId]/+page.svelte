@@ -29,40 +29,40 @@
 	];
 </script>
 
-<header class="profile-header">
-	{#if person.mugshot}
-		<img
-			class="profile-photo"
-			src={`https://fdnd.directus.app/assets/${person.mugshot}`}
-			alt={person.name}
-		/>
-	{/if}
-
-	<div class="profile-info">
-		<h1>{person.name}</h1>
-
-		{#if person.github_handle}
-			<p class="github-name">@{person.github_handle}</p>
-		{/if}
-
-		<p class="profile-details">
-			{#if person.birthdate}
-				<span>{person.birthdate}</span>
-			{/if}
-
-			{#if person.birthdate && person.residency}
-				<span class="divider">|</span>
-			{/if}
-
-			{#if person.residency}
-				<span>{person.residency}</span>
-			{/if}
-		</p>
-	</div>
-</header>
-
 <main class="profile-page">
 	<a class="back-link" href="/">← Back to overview</a>
+
+	<header class="profile-header">
+		{#if person.mugshot}
+			<img
+				class="profile-photo"
+				src={`https://fdnd.directus.app/assets/${person.mugshot}`}
+				alt={person.name}
+			/>
+		{/if}
+
+		<div class="profile-info">
+			<h1>{person.name}</h1>
+
+			{#if person.github_handle}
+				<p class="github-name">@{person.github_handle}</p>
+			{/if}
+
+			<p class="profile-details">
+				{#if person.birthdate}
+					<span>{person.birthdate}</span>
+				{/if}
+
+				{#if person.birthdate && person.residency}
+					<span class="divider">|</span>
+				{/if}
+
+				{#if person.residency}
+					<span>{person.residency}</span>
+				{/if}
+			</p>
+		</div>
+	</header>
 
 	{#if person.bio}
 		<section class="card bio-card">
