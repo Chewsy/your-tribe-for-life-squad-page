@@ -1,5 +1,8 @@
 <script>
 	import fdndLogo from '$lib/assets/fdndlogo.png';
+	import FilterButton from '$lib/FilterButton.svelte';
+
+	let { cities, seasons } = $props();
 </script>
 
 <header class="site-header">
@@ -20,14 +23,7 @@
 				</svg>
 			</label>
 
-			<button class="filter-button" type="button" aria-label="Filter studenten" title="Filter studenten">
-				<svg viewBox="0 0 24 24" aria-hidden="true">
-					<path d="M4 7h16M4 12h16M4 17h16"></path>
-					<circle cx="9" cy="7" r="1.75"></circle>
-					<circle cx="15" cy="12" r="1.75"></circle>
-					<circle cx="11" cy="17" r="1.75"></circle>
-				</svg>
-			</button>
+			<FilterButton {cities} {seasons}/>
 		</div>
 	</nav>
 </header>
@@ -109,8 +105,7 @@
 		opacity: 1;
 	}
 
-	.search-icon,
-	.filter-button svg {
+	.search-icon {
 		width: 1.5rem;
 		height: 1.5rem;
 		flex: 0 0 auto;
@@ -121,32 +116,9 @@
 		stroke-width: 1.75;
 	}
 
-	.filter-button {
-		display: grid;
-		place-items: center;
-		width: 2.75rem;
-		height: 2.75rem;
-		padding: 0;
-		border: 1px solid #ccc;
-		border-radius: 50%;
-		background: var(--light-purple);
-		color: white;
-		cursor: pointer;
-	}
-
-	.filter-button svg {
-		width: 2rem;
-		height: 2rem;
-	}
-
-	.logo-link:focus-visible,
-	.filter-button:focus-visible {
+	.logo-link:focus-visible {
 		outline: 3px solid var(--default-purple);
 		outline-offset: 3px;
-	}
-
-	.filter-button:hover {
-		background: var(--default-purple);
 	}
 
 	.visually-hidden {

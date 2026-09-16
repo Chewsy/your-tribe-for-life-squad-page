@@ -1,9 +1,38 @@
 <script>
     import Card from "$lib/Card.svelte";
+    import FilterButton from "$lib/FilterButton.svelte";
+    import { page } from "$app/state";
     import SkeletonCard from "$lib/Skeleton_card.svelte";
-
     import Sort from "$lib/SortButtons.svelte";
+    
     let { data } = $props();
+
+    // personen filteren
+    const filteredPersons = $derived(
+        data.persons.filter((person) => {
+        const residency = page.url.searchParams.get("residency");
+        const bold = page.url.searchParams.get("bold");
+        const season = page.url.searchParams.get("season");
+
+            if (residency && person.residency !== residency){
+                return false;
+            }
+
+            if (bold === "yes" && !person.is_bold) {
+            return false;
+            }
+
+            if (bold === "no" && person.is_bold) {
+            return false;
+            }
+
+            if (season && person.fav_season !== season) {
+            return false;
+            }
+
+            return true;
+        })
+    )
 
     let sortOrder = $state('asc');
 
@@ -15,23 +44,22 @@
 
     function getSortedPersons() {
         let copy = [];
-        for (let i = 0; i < data.persons.length; i++) {
-            copy.push(data.persons[i]);
-    }
-
-    copy.sort(function (a, b) {
-        let nameA = a.name.toLowerCase();
-        let nameB = b.name.toLowerCase();
-
-        if (sortOrder === 'asc') {
-            return nameA.localeCompare(nameB);
-        } else {
-            return nameB.localeCompare(nameA);
+        for (let i = 0; i < filteredPersons.length; i++) {
+            copy.push(filteredPersons[i]);
         }
-    });
 
-    return copy
+        copy.sort(function (a, b) {
+            let nameA = a.name.toLowerCase();
+            let nameB = b.name.toLowerCase();
 
+            if (sortOrder === 'asc') {
+                return nameA.localeCompare(nameB);
+            } else {
+                return nameB.localeCompare(nameA);
+            }
+        });
+
+        return copy
     }
 </script>
 
@@ -40,10 +68,15 @@
     <Sort {sortOrder} onSort={makeSort} />
 
     <ul class="squad-list">
-        {#each sortedPersons as person (person.id)}
+{#each sortedPersons as person (person.id)}
             <li class="squad-list-item">
                 <Card {person} />
             </li>
+        {:else}
+         <li class="empty-state">
+            Geen personen gevonden met deze filters.
+            <a href="/">Wis alle filters</a>
+         </li>  
         {/each}
     <p class="visually-hidden" role="status">
         {#await data.persons}
@@ -94,6 +127,40 @@
         }
     }
 
+    .empty-state {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: var(--space-lg, 2rem);
+        color: var(--dark-purple);
+        font-size: var(--font-size);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-sm, 0.75rem);
+        min-height: 50dvh;
+
+
+        a {
+        color: var(--white);
+        font-weight: 600;
+        background: var(--default-purple);
+        padding: var(--space-sm);
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: transform 150ms ease, box-shadow 150ms ease;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 16px var(--light-purple);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+    }
+  
     .squad-list-item {
         min-width: 0;
     }
