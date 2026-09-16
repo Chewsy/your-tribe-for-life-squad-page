@@ -1,6 +1,6 @@
 <script>
-	import fdndLogo from '$lib/assets/fdndlogo.png';
-	import FilterButton from '$lib/FilterButton.svelte';
+	import fdndLogo from "$lib/assets/fdndlogo.png";
+	import FilterButton from "$lib/FilterButton.svelte";
 
 	let { cities = [], seasons = [] } = $props();
 </script>
@@ -21,38 +21,33 @@
 				</svg>
 			</label>
 
-			<FilterButton {cities} {seasons}/>
+			<FilterButton {cities} {seasons} />
 		</div>
 	</nav>
 </header>
 
 <style>
-	.site-header,
-	.site-header * {
-		box-sizing: border-box;
-	}
-
 	.site-header {
 		position: sticky;
 		top: 0;
 		z-index: 10;
-		border-bottom: 1px solid #ddd;
+		border-bottom: 1px solid var(--skeleton-gray);
 		background: var(--white);
-		box-shadow: 0 2px 8px #eee;
-		padding: 1rem 1.25rem;
+		box-shadow: 0 2px 8px var(--skeleton-gray);
+		padding: var(--space-md);
 	}
 
 	.site-navigation {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.75rem;
+		gap: var(--space-sm);
 		margin: 0 auto;
-		max-width: 1200px;
+		max-width: 75rem;
 	}
 
 	.logo-link {
-		color: black;
+		color: var(--dark-purple);
 		flex: 0 0 auto;
 		text-decoration: none;
 	}
@@ -67,7 +62,7 @@
 	.navigation-actions {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-sm);
 		min-width: 0;
 	}
 
@@ -76,11 +71,11 @@
 		align-items: center;
 		width: min(49vw, 16rem);
 		height: 2.75rem;
-		padding: 0 0.75rem 0 1rem;
-		border: 1px solid #ccc;
+		padding: 0 var(--space-sm) 0 var(--space-md);
+		border: 1px solid var(--skeleton-gray);
 		border-radius: 999px;
-		background: white;
-		box-shadow: 0 1px 2px #eee;
+		background: var(--white);
+		box-shadow: 0 1px 2px var(--skeleton-gray);
 	}
 
 	.search-field:focus-within {
@@ -94,18 +89,18 @@
 		border: 0;
 		outline: 0;
 		background: transparent;
-		color: black;
+		color: var(--dark-purple);
 		font: inherit;
 	}
 
 	.search-field input::placeholder {
-		color: #77786f;
-		opacity: 1;
+		color: var(--dark-purple);
+		opacity: 0.6;
 	}
 
 	.search-icon {
-		width: 1.5rem;
-		height: 1.5rem;
+		width: var(--space-lg);
+		height: var(--space-lg);
 		flex: 0 0 auto;
 		fill: none;
 		stroke: currentColor;
@@ -121,11 +116,11 @@
 
 	@media (width >= 600px) {
 		.site-header {
-			padding: 1rem 2.5rem;
+			padding: var(--space-md) var(--space-xl);
 		}
 
 		.navigation-actions {
-			gap: 0.75rem;
+			gap: var(--space-sm);
 		}
 
 		.search-field {
