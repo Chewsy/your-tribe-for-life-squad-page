@@ -48,7 +48,7 @@ html {
 	color: var(--dark-purple);
 }
 
-h1{
+h1 {
 	margin-bottom: var(--space-lg);
 }
 
@@ -96,4 +96,8 @@ a:hover {
 	position: absolute;
 	white-space: nowrap;
 	width: 1px;
+}
+
+ol {
+	list-style: none;
 }
