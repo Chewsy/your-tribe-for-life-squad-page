@@ -52,10 +52,6 @@ h1 {
 	margin-bottom: var(--space-lg);
 }
 
-ul {
-	list-style: none;
-}
-
 .squad-list {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
