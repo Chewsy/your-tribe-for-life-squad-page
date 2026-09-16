@@ -48,6 +48,10 @@ html {
 	color: var(--dark-purple);
 }
 
+h1{
+	margin-bottom: var(--space-lg);
+}
+
 ul {
 	list-style: none;
 }

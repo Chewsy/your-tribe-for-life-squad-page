@@ -13,7 +13,7 @@
 </script>
 
 <main>
-    <h1 class="visually-hidden">Squad overzicht</h1>
+    <h1>Squad overzicht</h1>
 
     <Sort {sortOrder} onSort={makeSort} />
 
