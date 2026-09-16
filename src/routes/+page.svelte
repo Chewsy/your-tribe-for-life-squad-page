@@ -28,13 +28,13 @@
     </p>
 
     {#await data.persons}
-        <ul class="squad-list">
+        <ol class="squad-list">
             {#each Array(24) as _}
                 <li class="squad-list-item">
                     <SkeletonCard />
                 </li>
             {/each}
-        </ul>
+        </ol>
     {:then persons}
         <SquadList {persons} {sortOrder} />
     {:catch}

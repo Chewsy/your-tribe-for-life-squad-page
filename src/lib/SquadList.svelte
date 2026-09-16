@@ -31,7 +31,7 @@
     );
 </script>
 
-<ul class="squad-list">
+<ol class="squad-list">
     {#each sortedPersons as person (person.id)}
         <li class="squad-list-item">
             <Card {person} />
@@ -42,7 +42,7 @@
             <a href="/">Wis alle filters</a>
         </li>
     {/each}
-</ul>
+    </ol>
 
 <style>
     .empty-state {
