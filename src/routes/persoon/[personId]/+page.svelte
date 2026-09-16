@@ -2,6 +2,10 @@
 	let { data } = $props();
 	let person = data.person;
 
+	let profileImageSrc = $state(
+    person.mugshot ? `https://fdnd.directus.app/assets/${person.mugshot}` : '/img-fallback.png'
+	);
+
     const favorites = [
 	    { label: 'Soep', value: person.fav_soup },
 		{ label: 'Fruit', value: person.fav_fruit },
@@ -34,9 +38,7 @@
 <a class="back-link" href="/">← Back to overview</a>
 
 <header class="profile-header">
-	{#if person.mugshot}
-		<img class="profile-photo" src={`https://fdnd.directus.app/assets/${person.mugshot}`} alt={person.name} />
-	{/if}
+	<img class="profile-photo" src={profileImageSrc} alt={person.name} onerror={() => (profileImageSrc = '/img-fallback.png')} />
 
 	<div class="profile-info">
 		<h1>{person.name}</h1>
@@ -65,7 +67,7 @@
 {#if person.bio}
 	<section class="card bio-card">
 		<h2>Bio</h2>
-		<p>{person.bio}</p>
+		<div class="bio-content">{@html person.bio}</div>
 	</section>
 {/if}
 
