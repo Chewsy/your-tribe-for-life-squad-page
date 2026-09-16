@@ -2,9 +2,16 @@
     import Card from "$lib/Card.svelte";
     import FilterButton from "$lib/FilterButton.svelte";
     import { page } from "$app/state";
+    import SkeletonCard from "$lib/Skeleton_card.svelte";
     import Sort from "$lib/SortButtons.svelte";
+    import { onMount } from "svelte";
     
     let { data } = $props();
+    let isLoading = $state(true);
+
+    onMount(() => {
+        isLoading = false;
+    });
 
     // personen filteren
     const filteredPersons = $derived(
@@ -66,17 +73,29 @@
 
     <Sort {sortOrder} onSort={makeSort} />
 
+    <p class="visually-hidden" role="status">
+        {isLoading ? "De squad wordt geladen." : `${sortedPersons.length} personen gevonden.`}
+    </p>
+
     <ul class="squad-list">
-{#each sortedPersons as person (person.id)}
-            <li class="squad-list-item">
-                <Card {person} />
-            </li>
+        {#if isLoading}
+            {#each Array(24) as _}
+                <li class="squad-list-item">
+                    <SkeletonCard />
+                </li>
+            {/each}
         {:else}
-         <li class="empty-state">
-            Geen personen gevonden met deze filters.
-            <a href="/">Wis alle filters</a>
-         </li>  
-        {/each}
+            {#each sortedPersons as person (person.id)}
+                <li class="squad-list-item">
+                    <Card {person} />
+                </li>
+            {:else}
+                <li class="empty-state">
+                    Geen personen gevonden met deze filters.
+                    <a href="/">Wis alle filters</a>
+                </li>
+            {/each}
+        {/if}
     </ul>
 </main>
 
@@ -138,6 +157,16 @@
   
     .squad-list-item {
         min-width: 0;
+    }
+
+    .visually-hidden {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
     }
 
 </style>
