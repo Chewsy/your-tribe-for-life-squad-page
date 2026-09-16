@@ -15,9 +15,7 @@
 	/* Lettertype */
 	--font: system-ui, sans-serif;
 	--font-size: 1rem;
-	/* volgens a11y */
 	--line-height: 1.5;
-	/* volgens a11y */
 
 	/* Font weight */
 	--bold: 700;
@@ -54,6 +52,29 @@ ul {
 	list-style: none;
 }
 
+.squad-list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-lg);
+	align-items: stretch;
+}
+
+.squad-list-item {
+	min-width: 0;
+}
+
+@media (width >=768px) {
+	.squad-list {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media (width >=1024px) {
+	.squad-list {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
 a {
 	color: var(--accent);
 	text-decoration: none;
@@ -61,4 +82,14 @@ a {
 
 a:hover {
 	color: var(--secondary-accent);
+}
+
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
 }
