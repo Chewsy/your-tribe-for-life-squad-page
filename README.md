@@ -1,42 +1,93 @@
-# sv
+# Squadpage - Team The Girls
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Inhoudsopgave
 
-## Creating a project
+  * [Beschrijving](#beschrijving)
+  * [Gebruik](#gebruik)
+  * [Kenmerken](#kenmerken)
+  * [Installatie](#installatie)
+  * [Bronnen](#bronnen)
+  * [Licentie](#licentie)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Beschrijving
+Wij hebben als team een ontwerp gemaakt en daar van een werkend squadpage van gemaakt waarin de gebruiker alle jaar tweedejaars squadleden te zien zijn, met per student een eigen detailpagina.
 
-```sh
-# create a new project
-npx sv create my-app
-```
+De data wordt live opgehaald uit Directus en gebouwt met SvelteKit. Je kunt de squad sorteren op naam. Ook kan je filteren op woonplaats, favoriete seizoen en of de squadlid kaal is of niet. Als je op iemand klikt, krijg je de detailpagina te zien.
 
-To recreate this project with the same configuration:
+## Gebruik
+Op de overzichtspagina staat de hele squad als een grid van kaarten, voorgesorteerd op naam oplopend. Via de filterknop kun je filteren op woonplaats, favoriete seizoen en of de persoon kaal is of niet.
 
-```sh
-# recreate this project
-npx sv@0.17.0 create --template minimal --no-types --install npm /Users/chama/Documents/GitHub/your-tribe-for-life-squad-page
-```
+Elke kaart is een link naar de detailpagina van de aangeklikte squadlid waar meer informatie in staat. Bestaat de squadlid niet, dan krijgt de gebruiker een 404 pagina te zien.
 
-## Developing
+## Kenmerken
+<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Directus (headless CMS)
+De app haalt de studentendata op uit de Directus API (`https://fdnd.directus.app/items/person?filter[squads][squad_id][cohort][_eq]=2627`) en filtert op de juiste cohort.
 
-```sh
-npm run dev
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/09947ff1ac4b3dc88d9fa00e2359d6e47055ce0f/src/routes/%2Bpage.server.js#L1-L19
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### SvelteKit (framework)
+Routing is opgebouwd met een dynamische route (`/persoon/[personId]`) voor de detailpagina's. De website maakt gebruik van herbruikbare componenten:
+- Card
+- SkeletonCard
+- SquadList
+- SortButtons
+- FilterButton
+- Navigation
+- Footer
 
-## Building
+### Overzichtspagina**
+<!-- Schrijf hier een stukje over de gebruikte technieken voor de overzichtspagina -->
 
-To create a production version of your app:
+### Loading en error states
+#### Loading state**
+<img width="478" height="480" alt="Screen Recording 2026-09-17 at 21 01 50" src="https://github.com/user-attachments/assets/fc11f673-0755-4cf3-8778-f450b2a8c74d" />
 
-```sh
-npm run build
-```
+Terwijl de squadleden worden geladen toont de pagina een grid met skeletonkaarten met een shiny animatie tenzij `prefers-reduced-motion`) ingeschakeld is voor de gebruiker. Als het laden mislukt verschijnt een error state met de optie om de pagina te verversen.
 
-You can preview the production build with `npm run preview`.
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/09947ff1ac4b3dc88d9fa00e2359d6e47055ce0f/src/routes/%2Bpage.svelte#L20-L28
+Dit verborgen stukje code zorgt er voor dat screenreader gebruikers de laadstatus van de pagina kunnen volgen en maakt de squadpage toegankelijk.  
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/09947ff1ac4b3dc88d9fa00e2359d6e47055ce0f/src/routes/%2Bpage.svelte#L30-L44
+Dit stukje code laadt 24 skeletonkaarten in in de layout van de success state tot de data opgehaald is (promise is fullfilled). Na de await laadt de block de normale kaarten inclusief opgehaalde data in.
+
+#### Error state**
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/09947ff1ac4b3dc88d9fa00e2359d6e47055ce0f/src/routes/%2Berror.svelte#L1-L7
+Hier wordt de status van de error in een shorthand if else block gegooid. Als de error message overeenkomt met die van de geimporteerde error handler van Sveltekit, wordt dat uitgeprint. Anders krijgt de gebruiker de fallback message te zien.  
+https://svelte.dev/docs/kit/$app-state
+
+
+### Navigatie
+<!-- Schrijf hier een stukje over de gebruikte technieken voor de navigatie -->
+
+### Detailpagina
+<!-- Schrijf hier een stukje over de gebruikte technieken voor de detailpagina -->
+
+### Filteren
+<!-- Schrijf hier een stukje over de gebruikte technieken voor de functionaliteit filteren -->
+
+## Installatie
+<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+Om het project op te starten volg je de volgende stappen
+
+1. clone het project
+2. installeer de packages benodigd voor het project
+   ```bash
+   npm install
+   ```
+3. start het project lokaal op
+   ```bash
+   npm run dev
+   ```
+
+## Bronnen
+
+- [Leertaak: Your Tribe for Life - Squad Page (wiki)](https://github.com/fdnd-task/your-tribe-for-life-squad-page/wiki)
+- [SvelteKit Docs](https://svelte.dev/docs/kit/introduction)
+- [Directus API Reference](https://directus.io/docs/api)
+- [Code Conventies @ FDND Docs](https://docs.fdnd.nl/conventies.html)
+
+## Licentie
+
+This project is licensed under the terms of the [MIT license](./LICENSE).
