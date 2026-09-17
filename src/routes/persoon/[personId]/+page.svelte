@@ -34,8 +34,8 @@
 <a class="back-link" href="/">← Back to overview</a>
 
 <header class="profile-header">
-	{#if person.mugshot}
-		<img class="profile-photo" src={`https://fdnd.directus.app/assets/${person.mugshot}`} alt={person.name} />
+	{#if person.mugshot_year2}
+		<img class="profile-photo" src={`https://fdnd.directus.app/assets/${person.mugshot_year2}`} alt={person.name} />
 	{/if}
 
 	<div class="profile-info">

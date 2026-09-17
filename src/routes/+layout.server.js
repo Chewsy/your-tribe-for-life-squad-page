@@ -11,8 +11,8 @@ export async function load() {
     // maak een variabele voor mugshot en indien mugshot `null` is, gebruik avatar voor de variabele
     const persons = data.map((person) => ({
         ...person,
-        image: person.mugshot
-            ? `${endpointBase}/assets/${person.mugshot}`
+        image: person.mugshot_year2
+            ? `${endpointBase}/assets/${person.mugshot_year2}`
             : null,
     }));
 
