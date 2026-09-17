@@ -1,5 +1,14 @@
 # Squadpage - Team The Girls
 
+<img width="auto" height="200" alt="image" src="https://github.com/user-attachments/assets/2ddc31da-06e4-40bb-a5df-cf0f88837033" />  
+
+[Live link](https://your-tribe-for-life-squadpage.netlify.app/)  
+
+---
+
+<img width="1080" height="600" alt="screenshot-rocks" src="https://github.com/user-attachments/assets/14bbd9f5-5fee-4e4b-ad7c-f098812179b8" />
+
+
 ## Inhoudsopgave
 
   * [Beschrijving](#beschrijving)
@@ -80,6 +89,10 @@ Om het project op te starten volg je de volgende stappen
    ```bash
    npm run dev
    ```
+
+## Code conventies
+Onze code conventies kan je hier vinden  
+[Code conventies](https://github.com/Chewsy/your-tribe-for-life-squad-page/issues/22)
 
 ## Bronnen
 
