@@ -7,7 +7,7 @@
 	);
 
     const favorites = [
-	    { label: 'Soep', value: person.fav_soup },
+	  { label: 'Soep', value: person.fav_soup },
 		{ label: 'Fruit', value: person.fav_fruit },
 		{ label: 'Spel', value: person.fav_game },
 		{ label: 'Muziek genre', value: person.fav_music_genre },
