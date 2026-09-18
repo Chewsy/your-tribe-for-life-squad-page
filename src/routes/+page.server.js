@@ -9,8 +9,8 @@ export function load({ fetch }) {
         .then(({ data }) =>
             data.map((person) => ({
                 ...person,
-                image: person.mugshot
-                    ? `${endpointBase}/assets/${person.mugshot}`
+                image: person.mugshot_year2
+                    ? `${endpointBase}/assets/${person.mugshot_year2}`
                     : null,
             }))
         );
