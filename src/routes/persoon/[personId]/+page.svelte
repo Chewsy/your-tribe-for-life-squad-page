@@ -7,7 +7,7 @@
 	);
 
     const favorites = [
-	    { label: 'Soep', value: person.fav_soup },
+	  { label: 'Soep', value: person.fav_soup },
 		{ label: 'Fruit', value: person.fav_fruit },
 		{ label: 'Spel', value: person.fav_game },
 		{ label: 'Muziek genre', value: person.fav_music_genre },
@@ -49,13 +49,14 @@
 			<p class="profile-details">
 				{#if person.birthdate}
 					<span>{person.birthdate}</span>
+					<span class="divider">|</span>
 				{/if}
 
 			{#if person.residency}
 				<span>{person.residency}</span>
 			{/if}
-		</p>
-	</div>
+			</p>
+		</div>
 </header>
 
 {#if person.bio}
@@ -117,74 +118,6 @@
 			</a>
 		</section>
 	{/if}
-
-	<div class="card-grid">
-		<section class="card">
-			<h2>Favorites</h2>
-
-			{#each favorites as favorite}
-				{#if favorite.value}
-					<p>
-						<strong>{favorite.label}:</strong>
-						{favorite.value}
-					</p>
-				{/if}
-			{/each}
-		</section>
-
-		<section class="card">
-			<h2>About me</h2>
-
-			{#each aboutMe as about}
-				{#if about.value}
-					<p><strong>{about.label}:</strong> {about.value}</p>
-				{/if}
-			{/each}
-		</section>
-
-		<section class="card">
-			<h2>Tech favorites</h2>
-
-			{#each techFavorites as favorite}
-				{#if favorite.value}
-					<p>
-						<strong>{favorite.label}:</strong>
-						{favorite.value}
-					</p>
-				{/if}
-			{/each}
-
-			{#if person.fav_color}
-				<p class="color-row">
-					<strong>Favorite color:</strong>
-					<span
-						class="color-swatch"
-						style="background:{person.fav_color}"
-					></span>
-					{person.fav_color}
-				</p>
-			{/if}
-		</section>
-
-		{#if person.fav_spotify_track}
-			<section class="card">
-				<h2>Favorite track</h2>
-				<a
-					class="spotify-button"
-					href={person.fav_spotify_track}
-					target="_blank"
-					rel="noopener"
-				>
-					<img
-						src="/spotify-icon.svg"
-						alt=""
-						width="16"
-						height="16"
-					/>
-					Open op Spotify
-				</a>
-			</section>
-		{/if}
 	</div>
 </main>
 
@@ -291,34 +224,32 @@
 	.card-grid {
 		grid-template-columns: 1fr 1fr;
 	}
-}
 
-.card-bio-card {
-	padding: 1.5rem 0 2rem 0;
+	.card-bio-card {
+		padding: 1.5rem 0 2rem 0;
 	
-	h2 {
-		padding-bottom: .5rem;
+		h2 {
+			padding-bottom: .5rem;
+		}
 	}
-}
 
-.spotify-button {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--space-sm);
-	padding: var(--space-sm) var(--space-md);
-	margin-top: var(--space-md);
-	background: var(--accent);
-	border: none;
-	border-radius: var(--radius);
-	color: var(--white);
-	font-weight: 600;
-	font-size: 1rem;
-	text-decoration: none;
+	.spotify-button {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-sm);
+		padding: var(--space-sm) var(--space-md);
+		margin-top: var(--space-md);
+		background: var(--accent);
+		border: none;
+		border-radius: var(--radius);
+		color: var(--white);
+		font-weight: 600;
+		font-size: 1rem;
+		text-decoration: none;
 
-
-	&:hover {
-		background: var(--secondary-accent);
-	}
+		&:hover {
+			background: var(--secondary-accent);
+		}
 
 		&:focus-visible {
 			outline: 2px solid var(--dark-purple);
