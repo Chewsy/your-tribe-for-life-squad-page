@@ -1,8 +1,8 @@
 <script>
-	import fdndLogo from '$lib/assets/fdndlogo.png';
-	import FilterButton from '$lib/FilterButton.svelte';
+	import fdndLogo from "$lib/assets/fdndlogo.png";
+	import FilterButton from "$lib/FilterButton.svelte";
 
-	let { cities, seasons } = $props();
+	let { cities = [], seasons = [] } = $props();
 </script>
 
 <header class="site-header">
@@ -12,49 +12,33 @@
 		</a>
 
 		<div class="navigation-actions">
-			<label class="search-field">
-				<!-- deze tekst is alleen voor screenreaders -->
-				<span class="visually-hidden">Search</span>
-				<input type="search" placeholder="Zoek een student" />
-				<!-- dit svg is het vergrootglas icoon -->
-				<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
-					<circle cx="11" cy="11" r="6"></circle>
-					<path d="m16 16 4 4"></path>
-				</svg>
-			</label>
-
-			<FilterButton {cities} {seasons}/>
+			<FilterButton {cities} {seasons} />
 		</div>
 	</nav>
 </header>
 
 <style>
-	.site-header,
-	.site-header * {
-		box-sizing: border-box;
-	}
-
 	.site-header {
 		position: sticky;
 		top: 0;
 		z-index: 10;
-		border-bottom: 1px solid #ddd;
+		border-bottom: 1px solid var(--skeleton-gray);
 		background: var(--white);
-		box-shadow: 0 2px 8px #eee;
-		padding: 1rem 1.25rem;
+		box-shadow: 0 2px 8px var(--skeleton-gray);
+		padding: var(--space-md);
 	}
 
 	.site-navigation {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.75rem;
+		gap: var(--space-sm);
 		margin: 0 auto;
-		max-width: 1200px;
+		max-width: 75rem;
 	}
 
 	.logo-link {
-		color: black;
+		color: var(--dark-purple);
 		flex: 0 0 auto;
 		text-decoration: none;
 	}
@@ -69,51 +53,8 @@
 	.navigation-actions {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--space-sm);
 		min-width: 0;
-	}
-
-	.search-field {
-		display: flex;
-		align-items: center;
-		width: min(49vw, 16rem);
-		height: 2.75rem;
-		padding: 0 0.75rem 0 1rem;
-		border: 1px solid #ccc;
-		border-radius: 999px;
-		background: white;
-		box-shadow: 0 1px 2px #eee;
-	}
-
-	.search-field:focus-within {
-		border-color: var(--default-purple);
-		box-shadow: 0 0 0 3px hsl(268 62% 46% / 25%);
-	}
-
-	.search-field input {
-		width: 100%;
-		min-width: 0;
-		border: 0;
-		outline: 0;
-		background: transparent;
-		color: black;
-		font: inherit;
-	}
-
-	.search-field input::placeholder {
-		color: #77786f;
-		opacity: 1;
-	}
-
-	.search-icon {
-		width: 1.5rem;
-		height: 1.5rem;
-		flex: 0 0 auto;
-		fill: none;
-		stroke: currentColor;
-		stroke-linecap: round;
-		stroke-linejoin: round;
-		stroke-width: 1.75;
 	}
 
 	.logo-link:focus-visible {
@@ -121,30 +62,13 @@
 		outline-offset: 3px;
 	}
 
-	.visually-hidden {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-		border: 0;
-	}
-
-	/* dit zorgt dat de zoekbalk op kleine schermen compact blijft */
 	@media (width >= 600px) {
 		.site-header {
-			padding: 1rem 2.5rem;
+			padding: var(--space-md) var(--space-xl);
 		}
 
 		.navigation-actions {
-			gap: 0.75rem;
-		}
-
-		.search-field {
-			width: 16rem;
+			gap: var(--space-sm);
 		}
 	}
 </style>
