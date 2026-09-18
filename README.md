@@ -15,6 +15,7 @@
   * [Gebruik](#gebruik)
   * [Kenmerken](#kenmerken)
   * [Installatie](#installatie)
+  * [Code Conventies](#code-conventies)
   * [Bronnen](#bronnen)
   * [Licentie](#licentie)
 
@@ -29,12 +30,10 @@ Op de overzichtspagina staat de hele squad als een grid van kaarten, voorgesorte
 Elke kaart is een link naar de detailpagina van de aangeklikte squadlid waar meer informatie in staat. Bestaat de squadlid niet, dan krijgt de gebruiker een 404 pagina te zien.
 
 ## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
-
 ### Directus (headless CMS)
 De app haalt de studentendata op uit de Directus API (`https://fdnd.directus.app/items/person?filter[squads][squad_id][cohort][_eq]=2627`) en filtert op de juiste cohort.
 
-https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/09947ff1ac4b3dc88d9fa00e2359d6e47055ce0f/src/routes/%2Bpage.server.js#L1-L19
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/%2Bpage.server.js#L1-L19
 
 ### SvelteKit (framework)
 Routing is opgebouwd met een dynamische route (`/persoon/[personId]`) voor de detailpagina's. De website maakt gebruik van herbruikbare componenten:
@@ -45,6 +44,40 @@ Routing is opgebouwd met een dynamische route (`/persoon/[personId]`) voor de de
 - FilterButton
 - Navigation
 - Footer
+
+| Component | Wat doet het? |
+| --- | --- |
+| `Card` | Toont één squadlid (foto met fallback, naam, leeftijd) als link naar de detailpagina |
+| `SkeletonCard` | Placeholder-kaart tijdens het laden |
+| `SquadList` | Filtert en sorteert de squadleden en toont ze als grid |
+| `SortButtons` | Knoppen om van A-Z of Z-A te sorteren |
+| `FilterButton` | Knop met een popover die het filterformulier bevat |
+| `Navigation` | Navigatiebalk met de filterknop |
+| `Footer` | Voettekst op elke pagina |
+
+
+### HTML
+De pagina's zijn gebouwd met semantische elementen, zodat ze goed werken met een screenreader.
+
+- `header`, `nav` en `main` voor de opbouw van de pagina
+- `ol` en `li` voor de lijst met squadleden, met een `article` per kaart
+- `form`, `fieldset`, `legend` en `label` voor het filter
+- `alt=""` bij decoratieve icoontjes
+
+### CSS
+Elke component heeft een eigen `<style>`-blok, en de gedeelde waardes staan in `styleguide.css`.
+
+- Custom properties (`var(--space-md)`, `var(--default-purple)`) voor kleuren en ruimtes
+- `aspect-ratio` en `object-fit: cover` voor een responsive grid en foto's
+- Media queries voor de indeling op grotere schermen
+- `:popover-open` en `appearance: none` voor het eigen ontwerp van het filter
+- `position: sticky` voor de navigatie
+- `:focus-visible` en `prefers-reduced-motion` voor toegankelijkheid
+- CSS nesting bij hover-stijlen en op de detailpagina
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/lib/FilterButton.svelte#L82-L93
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/lib/SquadList.svelte#L77-L79
 
 ### Overzichtspagina
 <!-- Schrijf hier een stukje over de gebruikte technieken voor de overzichtspagina -->
@@ -63,21 +96,79 @@ Dit stukje code laadt 24 skeletonkaarten in in de layout van de success state to
 
 #### Error state
 https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/09947ff1ac4b3dc88d9fa00e2359d6e47055ce0f/src/routes/%2Berror.svelte#L1-L7
+
 Hier wordt de status van de error in een shorthand if else block gegooid. Als de error message overeenkomt met die van de geimporteerde error handler van Sveltekit, wordt dat uitgeprint. Anders krijgt de gebruiker de fallback message te zien.  
 https://svelte.dev/docs/kit/$app-state
 
+Deze pagina verschijnt als een squadlid niet bestaat. De load functie van de detailpagina gooit zelf een error 404. 
+De pagina toont de statuscode, een titel, de melding en een link terug naar de overzichtspagina.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/%2Berror.svelte#L9-L17
 
 ### Navigatie
-<!-- Schrijf hier een stukje over de gebruikte technieken voor de navigatie -->
+Navigation staat samen met Footer in `+layout.svelte`, dus ze staan automatisch op elke pagina. `{@render children()}` is de plek waar de pagina zelf wordt getoond.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/%2Blayout.svelte#L14-L17
+
+De Navigation-component bevat het logo (link naar overzichtspagina) en de FilterButton. De header is `position: sticky`, dus de navigatie blijft bovenaan staan tijdens het scrollen. Navigation gebruikt `cities` en `seasons` zelf niet, maar geeft ze alleen door aan FilterButton.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/lib/Navigation.svelte#L5-L18
 
 ### Detailpagina
-<!-- Schrijf hier een stukje over de gebruikte technieken voor de detailpagina -->
+Elke kaart linkt naar `/persoon/[personId]`. De haakjes in de mapnaam maken er een dynamische route van: SvelteKit gebruikt één pagina voor alle squadleden en geeft het id door als `params.personId`. De `load`-functie haalt alleen die ene persoon op uit Directus. Is de response niet ok, dan roept `error(404, …)` (een helper van SvelteKit) de foutpagina aan.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/persoon/%5BpersonId%5D/%2Bpage.server.js#L5-L17
+
+**Gegevens in lijstjes**
+
+De pagina heeft veel losse velden (soep, fruit, hobby, enzovoort). Die staan niet elk in eigen HTML, maar in arrays met een `label` en een `value`. Met `{#each}` wordt daar één keer HTML voor gemaakt. Een nieuw veld toevoegen is dan één regel in de array.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/persoon/%5BpersonId%5D/%2Bpage.svelte#L9-L19
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/persoon/%5BpersonId%5D/%2Bpage.svelte#L73-L79
+
+**Alleen tonen wat er is**
+
+Niet elk squadlid heeft alles ingevuld. Met `{#if}` worden lege velden overgeslagen, zowel binnen de lijstjes als bij losse onderdelen zoals de Spotify-link. Zo ontstaan er geen lege regels of kapotte knoppen.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/persoon/%5BpersonId%5D/%2Bpage.svelte#L112-L120
+
+**Foto met fallback**
+De foto-url staat in een `$state`. Kan de afbeelding niet geladen worden, dan vuurt `onerror` af en wordt de bron vervangen door `/img-fallback.png`. Zo zie je nooit een kapotte afbeelding.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/persoon/%5BpersonId%5D/%2Bpage.svelte#L5-L7
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/persoon/%5BpersonId%5D/%2Bpage.svelte#L40
+
+**Bio als HTML**
+
+De bio wordt getoond met `{@html person.bio}`, zodat opmaak uit Directus behouden blijft.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/persoon/%5BpersonId%5D/%2Bpage.svelte#L62-L67
+
+**Favoriete kleur**
+De kleur komt als tekst uit Directus. Die waarde wordt direct als achtergrond van het kleurvlakje gezet met `style="background:{person.fav_color}"`.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/persoon/%5BpersonId%5D/%2Bpage.svelte#L103-L109
 
 ### Filteren
 <!-- Schrijf hier een stukje over de gebruikte technieken voor de functionaliteit filteren -->
 
+### JavaScript
+De logica zit in de `load`-functies en in de componenten.
+
+- `fetch` met `await` of `.then()` om data uit Directus op te halen
+- `filter()` om alleen de gekozen personen te tonen
+- `[...array].sort()` met `localeCompare()` om op naam te sorteren
+- `page.url.searchParams` om de gekozen filters uit de URL te lezen
+- `new Date()` om de leeftijd uit de geboortedatum te berekenen
+- `onerror` om een kapotte foto te vervangen door een fallback
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/lib/SquadList.svelte#L7-L20
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/lib/SquadList.svelte#L22-L31
+
 ## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
 Om het project op te starten volg je de volgende stappen
 
 1. clone het project
