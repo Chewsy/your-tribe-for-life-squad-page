@@ -60,12 +60,11 @@
 				<span>{person.residency}</span>
 			{/if}
 		</p>
-
 	</div>
 </header>
 
 {#if person.bio}
-	<section class="card bio-card">
+	<section class="card-bio-card">
 		<h2>Bio</h2>
 		<div class="bio-content">{@html person.bio}</div>
 	</section>
@@ -82,7 +81,6 @@
 				</p>
 			{/if}
 		{/each}
-
 	</section>
 
 	<section class="card">
@@ -93,7 +91,6 @@
                 <p><strong>{about.label}:</strong> {about.value}</p>
             {/if}
 	    {/each}
-		
 	</section>
 
 	<section class="card">
@@ -114,7 +111,6 @@
 				{person.fav_color}
 			</p>
 		{/if}
-
 	</section>
 
 	{#if person.fav_spotify_track}
@@ -124,7 +120,6 @@
 				<img src="/spotify-icon.svg" alt="" width="16" height="16" />
 				Open op Spotify
 			</a>
-	
 		</section>
 	{/if}
 </div>
@@ -224,6 +219,14 @@
 
 	.card-grid {
 		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.card-bio-card {
+	padding: 1.5rem 0 2rem 0;
+	
+	h2 {
+		padding-bottom: .5rem;
 	}
 }
 
