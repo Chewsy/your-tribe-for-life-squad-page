@@ -3,11 +3,11 @@
 	let person = data.person;
 
 	let profileImageSrc = $state(
-    person.mugshot ? `https://fdnd.directus.app/assets/${person.mugshot}` : '/img-fallback.png'
+    person.mugshot ? `https://fdnd.directus.app/assets/${person.mugshot_year2}` : '/img-fallback.png'
 	);
 
     const favorites = [
-	  { label: 'Soep', value: person.fav_soup },
+	    { label: 'Soep', value: person.fav_soup },
 		{ label: 'Fruit', value: person.fav_fruit },
 		{ label: 'Spel', value: person.fav_game },
 		{ label: 'Muziek genre', value: person.fav_music_genre },
