@@ -51,21 +51,70 @@
 					<span>{person.birthdate}</span>
 				{/if}
 
-				{#if person.birthdate && person.residency}
-					<span class="divider">|</span>
-				{/if}
+			{#if person.residency}
+				<span>{person.residency}</span>
+			{/if}
+		</p>
+	</div>
+</header>
 
-				{#if person.residency}
-					<span>{person.residency}</span>
-				{/if}
+{#if person.bio}
+	<section class="card-bio-card">
+		<h2>Bio</h2>
+		<div class="bio-content">{@html person.bio}</div>
+	</section>
+{/if}
+
+<div class="card-grid">
+	<section class="card">
+		<h2>Favorites</h2>
+
+        {#each favorites as favorite}
+			{#if favorite.value}
+				<p>
+					<strong>{favorite.label}:</strong> {favorite.value}
+				</p>
+			{/if}
+		{/each}
+	</section>
+
+	<section class="card">
+		<h2>About me</h2>
+
+        {#each aboutMe as about}
+            {#if about.value}
+                <p><strong>{about.label}:</strong> {about.value}</p>
+            {/if}
+	    {/each}
+	</section>
+
+	<section class="card">
+		<h2>Tech favorites</h2>
+
+		{#each techFavorites as favorite}
+		    {#if favorite.value}
+                <p>
+                    <strong>{favorite.label}:</strong> {favorite.value}
+                </p>
+		    {/if}
+	    {/each}
+
+        {#if person.fav_color}
+			<p class="color-row">
+				<strong>Favorite color:</strong>
+				<span class="color-swatch" style="background:{person.fav_color}"></span>
+				{person.fav_color}
 			</p>
-		</div>
-	</header>
+		{/if}
+	</section>
 
-	{#if person.bio}
-		<section class="card bio-card">
-			<h2>Bio</h2>
-			<p>{person.bio}</p>
+	{#if person.fav_spotify_track}
+		<section class="card">
+			<h2>Favorite track</h2>
+			<a class="spotify-button" href={person.fav_spotify_track} target="_blank" rel="noopener">
+				<img src="/spotify-icon.svg" alt="" width="16" height="16" />
+				Open op Spotify
+			</a>
 		</section>
 	{/if}
 
@@ -237,20 +286,39 @@
 	.spotify-button {
 		display: inline-flex;
 		align-items: center;
-		gap: var(--space-sm);
-		padding: var(--space-sm) var(--space-md);
-		margin-top: var(--space-md);
-		background: var(--accent);
-		border: none;
-		border-radius: var(--radius);
-		color: var(--white);
-		font-weight: var(--bold);
-		font-size: var(--font-size);
-		text-decoration: none;
+	}
 
-		&:hover {
-			background: var(--secondary-accent);
-		}
+	.card-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.card-bio-card {
+	padding: 1.5rem 0 2rem 0;
+	
+	h2 {
+		padding-bottom: .5rem;
+	}
+}
+
+.spotify-button {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-sm);
+	padding: var(--space-sm) var(--space-md);
+	margin-top: var(--space-md);
+	background: var(--accent);
+	border: none;
+	border-radius: var(--radius);
+	color: var(--white);
+	font-weight: 600;
+	font-size: 1rem;
+	text-decoration: none;
+
+
+	&:hover {
+		background: var(--secondary-accent);
+	}
 
 		&:focus-visible {
 			outline: 2px solid var(--dark-purple);
