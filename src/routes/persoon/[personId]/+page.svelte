@@ -2,16 +2,20 @@
 	let { data } = $props();
 	let person = data.person;
 
-	const favorites = [
-		{ label: "Soep", value: person.fav_soup },
-		{ label: "Fruit", value: person.fav_fruit },
-		{ label: "Spel", value: person.fav_game },
-		{ label: "Muziek genre", value: person.fav_music_genre },
-		{ label: "Seizoen", value: person.fav_season },
-		{ label: "Dier", value: person.fav_animal },
-		{ label: "Hobby", value: person.fav_hobby },
-		{ label: "Sfeer", value: person.vibe_emoji },
-		{ label: "Emoji", value: person.fav_emoji },
+	let profileImageSrc = $state(
+    person.mugshot ? `https://fdnd.directus.app/assets/${person.mugshot}` : '/img-fallback.png'
+	);
+
+    const favorites = [
+	    { label: 'Soep', value: person.fav_soup },
+		{ label: 'Fruit', value: person.fav_fruit },
+		{ label: 'Spel', value: person.fav_game },
+		{ label: 'Muziek genre', value: person.fav_music_genre },
+		{ label: 'Seizoen', value: person.fav_season },
+		{ label: 'Dier', value: person.fav_animal },
+		{ label: 'Hobby', value: person.fav_hobby },
+		{ label: 'Sfeer', value: person.vibe_emoji },
+		{ label: 'Emoji', value: person.fav_emoji }
 	];
 
 	const aboutMe = [
@@ -30,16 +34,10 @@
 </script>
 
 <main class="profile-page">
-	<a class="back-link" href="/">← Back to overview</a>
+<a class="back-link" href="/">← Back to overview</a>
 
-	<header class="profile-header">
-		{#if person.mugshot}
-			<img
-				class="profile-photo"
-				src={`https://fdnd.directus.app/assets/${person.mugshot}`}
-				alt={person.name}
-			/>
-		{/if}
+<header class="profile-header">
+	<img class="profile-photo" src={profileImageSrc} alt={person.name} onerror={() => (profileImageSrc = '/img-fallback.png')} />
 
 		<div class="profile-info">
 			<h1>{person.name}</h1>
