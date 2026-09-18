@@ -46,7 +46,7 @@ Routing is opgebouwd met een dynamische route (`/persoon/[personId]`) voor de de
 - Navigation
 - Footer
 
-### Overzichtspagina**
+### Overzichtspagina
 <!-- Schrijf hier een stukje over de gebruikte technieken voor de overzichtspagina -->
 
 ### Loading en error states
