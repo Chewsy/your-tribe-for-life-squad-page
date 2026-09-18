@@ -43,21 +43,17 @@
 </article>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
-
   .student-card {
     height: 100%;
     overflow: hidden;
-    border: 1px solid #ddd;
+    border: 1px solid var(--skeleton-gray);
     border-radius: 1rem;
     background: var(--white);
-    box-shadow: 0 4px 12px #ddd;
+    box-shadow: 0 4px 12px var(--skeleton-gray);
   }
 
   .student-card:hover {
-    box-shadow: 0 6px 16px #ccc;
+    box-shadow: 0 6px 16px var(--skeleton-gray);
   }
 
   .card-link {
@@ -71,7 +67,7 @@
   .portrait {
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background: #dce3df;
+    background: var(--skeleton-gray);
   }
 
   .mugshot {
@@ -100,7 +96,7 @@
 
   .person-text p {
     margin-top: 0.25rem;
-    color: #5b5d57;
+    color: hsl(80, 3%, 35%);
     font-size: 0.875rem;
   }
 
