@@ -1,7 +1,7 @@
 const endpointBase = "https://fdnd.directus.app";
 const cohortFilter = "filter[squads][squad_id][cohort][_eq]=2627";
 
-export async function load() {
+export async function load({ fetch }) {
     const url = `${endpointBase}/items/person?${cohortFilter}`;
     const res = await fetch(url);
 
@@ -17,18 +17,17 @@ export async function load() {
     }));
 
     const cities = [];
-    for (const person of persons) {
+    const seasons = [];
+
+    for (const person of data) {
         if (person.residency && !cities.includes(person.residency)) {
             cities.push(person.residency);
         }
-    }
 
-    const seasons = [];
-    for (const person of persons) {
         if (person.fav_season && !seasons.includes(person.fav_season)) {
             seasons.push(person.fav_season);
         }
     }
 
-    return { persons, cities, seasons };
+    return { cities, seasons };
 }
