@@ -39,13 +39,6 @@
 <header class="profile-header">
 	<img class="profile-photo" src={profileImageSrc} alt={person.name} onerror={() => (profileImageSrc = '/img-fallback.png')} />
 
-	<div class="profile-info">
-		<h1>{person.name}</h1>
-
-		{#if person.github_handle}
-			<p class="github-name">@{person.github_handle}</p>
-		{/if}
-
 		<div class="profile-info">
 			<h1>{person.name}</h1>
 
