@@ -50,7 +50,7 @@ Routing is opgebouwd met een dynamische route (`/persoon/[personId]`) voor de de
 <!-- Schrijf hier een stukje over de gebruikte technieken voor de overzichtspagina -->
 
 ### Loading en error states
-#### Loading state**
+#### Loading state
 <img width="478" height="480" alt="Screen Recording 2026-09-17 at 21 01 50" src="https://github.com/user-attachments/assets/fc11f673-0755-4cf3-8778-f450b2a8c74d" />
 
 Terwijl de squadleden worden geladen toont de pagina een grid met skeletonkaarten met een shiny animatie tenzij `prefers-reduced-motion`) ingeschakeld is voor de gebruiker. Als het laden mislukt verschijnt een error state met de optie om de pagina te verversen.
@@ -61,7 +61,7 @@ Dit verborgen stukje code zorgt er voor dat screenreader gebruikers de laadstatu
 https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/09947ff1ac4b3dc88d9fa00e2359d6e47055ce0f/src/routes/%2Bpage.svelte#L30-L44
 Dit stukje code laadt 24 skeletonkaarten in in de layout van de success state tot de data opgehaald is (promise is fullfilled). Na de await laadt de block de normale kaarten inclusief opgehaalde data in.
 
-#### Error state**
+#### Error state
 https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/09947ff1ac4b3dc88d9fa00e2359d6e47055ce0f/src/routes/%2Berror.svelte#L1-L7
 Hier wordt de status van de error in een shorthand if else block gegooid. Als de error message overeenkomt met die van de geimporteerde error handler van Sveltekit, wordt dat uitgeprint. Anders krijgt de gebruiker de fallback message te zien.  
 https://svelte.dev/docs/kit/$app-state
