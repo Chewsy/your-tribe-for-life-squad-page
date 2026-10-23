@@ -1,5 +1,9 @@
 # Afspraken over samenwerking
 
+## Teamcanvas
+<img width="6548" height="4632" alt="image" src="https://github.com/user-attachments/assets/99b97a26-8a1f-4e8a-ba91-1f4fb5e2a858" />
+Dit was destijds ingevuld voordat Chassidy bij ons aanschoof.
+
 ## Communicatie
 Communicatie gaat via Teams of op locatie.
 
