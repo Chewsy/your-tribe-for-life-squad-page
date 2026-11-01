@@ -80,7 +80,17 @@ https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc42934
 https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/lib/SquadList.svelte#L77-L79
 
 ### Overzichtspagina
-<!-- Schrijf hier een stukje over de gebruikte technieken voor de overzichtspagina -->
+De overzichtspagina haalt alle squadleden in één keer op en laat ze zien als een grid van kaarten.
+
+- De `load`-functie geeft een promise terug, zonder `await`. De pagina laadt dus meteen en `{#await}` toont de skeletonkaarten tot de data binnen is.
+- `SquadList` ontvangt de personen en maakt per persoon een `Card`.
+- Het sorteren werkt met `$state`: `sortOrder` staat in `+page.svelte` en `SortButtons` past die aan via de callback-prop `onSort`. `SquadList` rekent daarna zelf opnieuw uit.
+- In `Card` wordt de leeftijd met `$derived` berekend uit de geboortedatum.
+- Als er niemand overblijft, toont `{:else}` in de `{#each}` een melding met een link om de filters te wissen.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/7239040e0fa2d3c6abc295053b8b706500f51f0b/src/routes/%2Bpage.svelte#L15-L45
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/7239040e0fa2d3c6abc295053b8b706500f51f0b/src/lib/SortButtons.svelte#L5-L19
 
 ### Loading en error states
 #### Loading state
@@ -152,7 +162,21 @@ De kleur komt als tekst uit Directus. Die waarde wordt direct als achtergrond va
 https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/routes/persoon/%5BpersonId%5D/%2Bpage.svelte#L103-L109
 
 ### Filteren
-<!-- Schrijf hier een stukje over de gebruikte technieken voor de functionaliteit filteren -->
+Het filteren gebeurt via de URL, zodat het ook werkt zonder JavaScript en je een gefilterde pagina kunt delen of verversen.
+
+1. Het filter is een `<form method="GET" action="/">` in een popover. De `name` van elk veld wordt een parameter in de URL, bijvoorbeeld `/?residency=Rotterdam&season=Zomer`.
+2. De opties voor woonplaats en seizoen komen uit `+layout.js`, dat de unieke waardes uit de data haalt. Ze gaan via `Navigation` naar `FilterButton`.
+3. `page.url.searchParams` leest de filters weer uit de URL. `filteredPersons` is een `$derived` die automatisch opnieuw rekent als de URL of de personen veranderen.
+4. `sortedPersons` is een tweede `$derived` die voortbouwt op `filteredPersons`. Hij maakt een kopie met `[...]`, omdat `.sort()` de originele array aanpast.
+5. Bij het versturen sluit `hidePopover()` de popover, terwijl het formulier gewoon verdergaat met versturen.
+
+Er is geen nieuwe fetch per filter. Het filteren gebeurt op de data die al binnen is.
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/lib/SquadList.svelte#L7-L20
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/a13c6dfdc13bc429348c459f7c92242ab2530b16/src/lib/SquadList.svelte#L22-L31
+
+https://github.com/Chewsy/your-tribe-for-life-squad-page/blob/7239040e0fa2d3c6abc295053b8b706500f51f0b/src/lib/FilterButton.svelte
 
 ### JavaScript
 De logica zit in de `load`-functies en in de componenten.
