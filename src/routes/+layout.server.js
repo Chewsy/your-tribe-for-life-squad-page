@@ -19,6 +19,7 @@ export async function load({ fetch }) {
     const cities = [];
     const seasons = [];
 
+    // Unieke steden en seizoenen verzamelen voor de dropdowns
     for (const person of data) {
         if (person.residency && !cities.includes(person.residency)) {
             cities.push(person.residency);

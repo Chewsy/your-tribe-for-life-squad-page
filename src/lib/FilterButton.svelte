@@ -175,7 +175,7 @@
       margin-bottom: var(--space-sm);
       font-size: var(--font-size);
       border: none;
-      box-shadow: var(--light-purple) 0px 0px 10px 2px;
+      box-shadow: var(--light-purple) 0px 0px 4px 1px;
       border-radius: .6rem;
       background: linear-gradient(to right,
       var(--default-purple),
@@ -183,9 +183,6 @@
       );
       color: var(--white);
       font-weight: 600;
-      text-shadow:
-        0 0 2px rgba(255, 255, 255, 0.6),
-        0 0 1px rgba(255, 255, 255, 0.25);
     }
 
     input[type="radio"] {

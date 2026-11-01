@@ -5,6 +5,7 @@
 
     let { data } = $props();
 
+    // $state: de waarde die ik zelf aanpas, SquadList rekent daarna opnieuw uit
     let sortOrder = $state("asc");
 
     function makeSort(newOrder) {

@@ -4,8 +4,10 @@
 
     let { persons, sortOrder } = $props();
 
+    // Rekent zichzelf opnieuw uit zodra persons of de URL verandert
     const filteredPersons = $derived(
         persons.filter((person) => {
+            // De filters komen uit de URL (het GET-formulier zet ze daar neer)            
             const residency = page.url.searchParams.get("residency");
             const bold = page.url.searchParams.get("bold");
             const season = page.url.searchParams.get("season");
@@ -19,7 +21,9 @@
         })
     );
 
+    // Bouwt verder op filteredPersons, rekent opnieuw uit bij andere filters of sortOrder
     const sortedPersons = $derived(
+        // Kopie met [...], want .sort() past de originele array aan
         [...filteredPersons].sort((a, b) => {
             const nameA = a.name.toLowerCase();
             const nameB = b.name.toLowerCase();
