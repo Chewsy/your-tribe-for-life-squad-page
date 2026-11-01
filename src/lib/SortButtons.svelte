@@ -3,6 +3,7 @@
 </script>
 
 <div class="sorting-buttons-wrapper">
+  <!-- class:active zet de class alleen als dit de gekozen volgorde is -->
   <button
     type="button"
     class:active={sortOrder === "asc"}
@@ -38,7 +39,7 @@
     border-radius: var(--radius);
     width: 4.5rem;
     color: var(--white);
-    box-shadow: var(--light-purple) 0px 0px 10px 2px;
+    box-shadow: var(--light-purple) 0px 0px 2px 1px;
     margin-bottom: var(--space-lg);
   }
 
@@ -51,6 +52,6 @@
   button.active {
     background-image: none;
     background-color: var(--default-purple);
-    box-shadow: var(--default-purple) 0px 0px 10px 2px;
+    box-shadow: var(--default-purple) 0px 0px 4px 1px;
   }
 </style>

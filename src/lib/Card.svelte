@@ -18,6 +18,7 @@
         return years;
     }
 
+    // $derived: leeftijd wordt opnieuw berekend als person verandert
     const age = $derived(calculateAge(person.birthdate));
     let imageSrc = $state(person.image || '/img-fallback.png');
 

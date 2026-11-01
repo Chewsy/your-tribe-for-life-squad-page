@@ -6,6 +6,8 @@
     person.mugshot ? `https://fdnd.directus.app/assets/${person.mugshot_year2}` : '/img-fallback.png'
 	);
 
+	// Lijsten met label en waarde, zodat {#each} ze hergebruikt
+	// en {#if favorite.value} lege velden overslaat
     const favorites = [
 	    { label: 'Soep', value: person.fav_soup },
 		{ label: 'Fruit', value: person.fav_fruit },
